@@ -1,0 +1,32 @@
+p {
+    font-family: courier;
+    color: white;
+    max-width: 200px;
+    padding: 30px;
+    text-align: center;
+    margin: 5px;
+}
+
+p:nth-child(1){
+    background-color: tomato;
+    background-image: url(duck.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+p:nth-child(2){
+    background-color: purple;
+    background-image: url(duck.png);
+    background-size: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+p:nth-child(3){
+    background-color: grey;
+    background-image: url(duck.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
