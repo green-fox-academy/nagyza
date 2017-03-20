@@ -1,0 +1,14 @@
+ul {
+    list-style: square;
+    color: blue;
+}
+.fruits-list {
+    list-style: disc;
+    color: black;
+}
+.apple {
+    color: red;
+}
+ol {
+    color: black;
+}

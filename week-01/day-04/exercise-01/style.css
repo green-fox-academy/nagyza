@@ -1,0 +1,16 @@
+body {
+    font-size: 36px;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 15px 15px 100px;
+    text-align: left;
+}
+div {
+    width: 400px;
+    margin: 20px;
+    border: 5px solid rgba(125, 206, 148, 0.9);
+    background-color: rgba(14, 145, 161, 0.9);
+}

@@ -1,0 +1,21 @@
+body {
+    font-size: 36px;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 50px;
+    text-align: center;
+}
+div {
+    border: 30px solid rgb(66, 133, 244);
+    width: 400px;
+    margin: 10px;
+}
+.North {
+    background-color: rgb(230, 118, 118);
+}
+.South {
+    background-color: rgb(169, 230, 230);
+}
