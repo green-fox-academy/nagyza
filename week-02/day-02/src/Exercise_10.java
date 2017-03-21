@@ -7,6 +7,8 @@ public class Exercise_10 {
     int sideB = 22;
     int sideC = 13;
     int surfaceArea = (sideA * sideB + sideA * sideC + sideB * sideC) * 2;
+    int cuboidVolume = sideA * sideB * sideC;
     System.out.println("Surface Area: " + surfaceArea);
+    System.out.println("Volume: " + cuboidVolume);
   }
 }
