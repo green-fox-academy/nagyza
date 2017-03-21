@@ -11,6 +11,7 @@ public class Exercise_15 {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Add meg a tavolsagot km-ben! ");
     double km = scanner.nextDouble();
-
+    double miles = km * 0.621371192237;
+    System.out.println(km + "km = " + miles + " merfold.");
   }
 }
