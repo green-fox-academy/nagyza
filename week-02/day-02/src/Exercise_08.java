@@ -7,6 +7,9 @@ public class Exercise_08 {
     int myAge = 43;
     double myHeight = 1.73;
     boolean isMarried = true;
-    
+    System.out.println(myAge);
+    System.out.println(myHeight);
+    System.out.println(myName);
+    System.out.println(isMarried);
   }
 }
