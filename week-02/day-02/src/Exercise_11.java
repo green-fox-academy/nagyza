@@ -8,7 +8,6 @@ public class Exercise_11 {
     int currentSeconds = 42;
     int wholeDaySeconds = 60 * 60 * 24;
     int passedSeconds = (currentHours * 60 * 60) + (currentMinutes * 60) + currentSeconds;
-    System.out.println(wholeDaySeconds);
-    System.out.println(passedSeconds);
+    System.out.println(wholeDaySeconds - passedSeconds);
   }
 }
