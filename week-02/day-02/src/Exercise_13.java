@@ -5,35 +5,22 @@ public class Exercise_13 {
   public static void main(String[] args) {
     int a = 3;
     // make it bigger by 10
-
-
+    a += 3;
     System.out.println(a);
-
-
-
 
     int b = 100;
     // make it smaller by 7
-
-
+    b -= 7;
     System.out.println(b);
-
-
-
 
     int c = 44;
     // please double c's value
-
-
+    c *= c;
     System.out.println(c);
-
-
-
 
     int d = 125;
     // please divide by 5 d's value
-
-
+    d /= 5;
     System.out.println(d);
 
 
@@ -63,7 +50,7 @@ public class Exercise_13 {
 
 
 
-    int h = 1357988018575474;
+    double h = 1357988018575474.;
     // tell if it has 11 as a divisor (print as a boolean)
 
 
@@ -79,7 +66,6 @@ public class Exercise_13 {
 
     int j = 1521;
     // tell if j is dividable by 3 or 5 (print as a boolean)
-
 
 
 
