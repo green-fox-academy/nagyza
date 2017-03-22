@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by nagyza on 2017.03.22..
@@ -14,6 +15,18 @@ public class Exercise_33 {
     // You found the number: 8
     int randomNumber = (int) (Math.random() * 10) + 1;
     System.out.println(randomNumber);
-
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("I generated a number. Try to guess it!");
+    int guessNumber = scanner.nextInt();
+    while (guessNumber != randomNumber) {
+      if (guessNumber < randomNumber) {
+        System.out.println("The stored number is higher. Try again!");
+        guessNumber = scanner.nextInt();
+      } else {
+        System.out.println("The stored number is lower. Try again!");
+        guessNumber = scanner.nextInt();
+      }
+    }
+    System.out.println("You found the number: " + randomNumber);
   }
 }
