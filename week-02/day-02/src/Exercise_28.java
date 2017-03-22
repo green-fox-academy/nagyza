@@ -18,14 +18,10 @@ public class Exercise_28 {
     System.out.println("Give me a number! ");
     int number = scanner.nextInt();
     for (int i = 0; i < number; i++) {
-      for (int j = 0; j < number; j++) {
-        if (j < number - 1) {
-          System.out.print(" ");
-        } else {
-          System.out.println("*");
-        }
+      for (int j = 0; j < (number - i - 1); j++) {
+        System.out.print(j + 1);
       }
+      System.out.println("*");
     }
-
   }
 }
