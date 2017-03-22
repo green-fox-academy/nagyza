@@ -14,7 +14,6 @@ public class Exercise_33 {
     // The stried number is lower
     // You found the number: 8
     int randomNumber = (int) (Math.random() * 10) + 1;
-    System.out.println(randomNumber);
     Scanner scanner = new Scanner(System.in);
     System.out.println("I generated a number. Try to guess it!");
     int guessNumber = scanner.nextInt();
