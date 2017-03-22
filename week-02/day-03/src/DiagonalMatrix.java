@@ -18,6 +18,12 @@ public class DiagonalMatrix {
     for (int i = 0; i < 4; i++) {
       twoDimensionalArray[i][i] = 1;
     }
-    System.out.println(twoDimensionalArray[2][1]);
+    for (int a[] : twoDimensionalArray) {
+      System.out.println("");
+      System.out.print("|");
+      for (int b : a) {
+        System.out.print(b + "|");
+      }
+    }
   }
 }
