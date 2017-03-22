@@ -19,9 +19,12 @@ public class Exercise_28 {
     int number = scanner.nextInt();
     for (int i = 0; i < number; i++) {
       for (int j = 0; j < (number - i - 1); j++) {
-        System.out.print(j + 1);
+        System.out.print(" ");
       }
-      System.out.println("*");
+      for (int k = 0; k < (1 + (i * 2)); k++) {
+        System.out.print("*");
+      }
+      System.out.println("");
     }
   }
 }
