@@ -11,10 +11,9 @@ public class Reverse {
 
     String temporaryString = "";
     int countBack = reversed.length();
-    for (int i = 0; i < reversed.length(); i++) {
+    for (int i = reversed.length() - 1; i > 0; i--) {
       StringBuilder makeString = new StringBuilder();
-      temporaryString = temporaryString.concat(Character.toString(reversed.charAt(countBack - 1)));
-      countBack--;
+      temporaryString = temporaryString.concat(Character.toString(reversed.charAt(i)));
     }
     reversed = temporaryString;
     System.out.println(reversed);
