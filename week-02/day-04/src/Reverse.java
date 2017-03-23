@@ -10,7 +10,7 @@ public class Reverse {
     // Try to solve this using charAt() first, and optionally anything else after.
 
     String temporaryString = "";
-    for (int i = reversed.length() - 1; i > 0; i--) {
+    for (int i = reversed.length() - 1; i > -1; i--) {
       temporaryString = temporaryString.concat(Character.toString(reversed.charAt(i)));
     }
     reversed = temporaryString;
