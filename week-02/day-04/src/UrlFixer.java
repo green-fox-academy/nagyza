@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by nagyza on 2017.03.23..
  */
@@ -10,8 +12,12 @@ public class UrlFixer {
     // Try to solve it more than once using different String functions!
 
     url = url.replace("bots", "odds");
+    System.out.println(insertForgottenColonIntoUrl(url));
+  }
 
-    System.out.println(url);
-
+  public static String insertForgottenColonIntoUrl(String url) {
+    String[] parts = new String[2];
+    parts = url.split("//");
+    return parts[0].concat("://".concat(parts[1]));
   }
 }
