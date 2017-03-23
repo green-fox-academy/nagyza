@@ -15,8 +15,17 @@ public class QuoteSwap {
 
     // Also, print the sentence to the output with spaces in between.
 
-    System.out.println(rightOrder(list, "cannot", 2));
-    System.out.println(rightOrder(list, "do", 6));
+    list = (rightOrder(list, "cannot", 2));
+    list = (rightOrder(list, "do", 6));
+    String sentence = "";
+    for (String word : list) {
+      if (sentence == "") {
+        sentence = sentence + word;
+      } else {
+        sentence = sentence + " " + word;
+      }
+    }
+    System.out.println(sentence);
   }
   public static ArrayList rightOrder(ArrayList<String> list, String toOrder, int whereTo) {
     ArrayList<String> arrayList = list;
