@@ -9,14 +9,21 @@ import java.util.Arrays;
 public class PalindromeSearcher {
   public static void main(String[] args) {
     ArrayList<String> foundPalindromes = new ArrayList<>();
-    String stringToExamine = "dog goat dad duck doodle never";
-    for (int i = stringToExamine.length(); i > 2; i--) { // todo egybetuseket kizarni
-      for (int  j = 0; j < i + 1; j++) {
+    String stringToExamine = "abba8*8indulagorogaludni8*8abba";
+    for (int i = stringToExamine.length(); i > 2; i--) {
+      for (int j = 0; j < i + 1; j++) {
         if (palTrial(stringToExamine.substring(j, i))) {
-          System.out.println("j " + j + "i" + i + "bent " + stringToExamine.substring(j, i));
-          foundPalindromes.add(stringToExamine.substring(j, i));
+          System.out.println(palTrial(stringToExamine.substring(j, i)));
+          if (stringToExamine.substring(j, i).length() > 2) {
+            foundPalindromes.add(stringToExamine.substring(j, i));
+          }
+        } else {
+          System.out.println(palTrial(stringToExamine.substring(j, i)));
         }
       }
+    }
+    for (String palind : foundPalindromes) {
+      System.out.println(palind);
     }
     System.out.println(foundPalindromes);
   }
