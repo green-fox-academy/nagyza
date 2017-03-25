@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class PalindromeSearcher {
   public static void main(String[] args) {
     ArrayList<String> foundPalindromes = new ArrayList<>();
-    String stringToExamine = "abba8*8indulagorogaludni8*8abba";
+    String stringToExamine = "abaindulagorogaludniaba";
     for (int i = stringToExamine.length(); i > 2; i--) {
       for (int j = 0; j < i + 1; j++) {
         if (palTrial(stringToExamine.substring(j, i))) {
@@ -20,30 +20,31 @@ public class PalindromeSearcher {
         }
       }
     }
-    for (String palind : foundPalindromes) {
-      String actualPal = palind;
-      int f = 0;
-      for (int i = 0; i < foundPalindromes.size(); i++) {
-        if (foundPalindromes.contains(actualPal)) {
-          f++;
-        }
-      }
-    }
-    for (String palind : foundPalindromes) {
-      System.out.println(palind);
-    }
-    System.out.println(foundPalindromes);
+    System.out.println(removeDuplicates(foundPalindromes));
   }
 
-  public static void removeDuplicates(ArrayList<String> arraySimplify) {
+  public static ArrayList<String> removeDuplicates(ArrayList<String> arraySimplify) {
+    ArrayList<Integer> indexRem = new ArrayList<>();
     for (String palind : arraySimplify) {
-      ArrayList<int> foundindex = new ArrayList<int>();
-      for (int i = 0; i < arraySimplify.size(); i++) {
-        if (palind == arraySimplify.get(i)) {
-          foundindex.add(i);
-        }
+      indexRem = indexCollector(arraySimplify, palind);
+    }
+    for (Integer toDelete : indexRem) {
+      arraySimplify.remove((int)toDelete);
+    }
+    return arraySimplify;
+  }
+
+  private static ArrayList<Integer> indexCollector(ArrayList<String> arrayCount, String palind) {
+    ArrayList<Integer> foundIndexes = new ArrayList<>();
+    int counter = -1;
+    for (String palindTest : arrayCount) {
+      counter++;
+      if (palindTest.equalsIgnoreCase(palind)) {
+        foundIndexes.add(counter);
       }
     }
+    foundIndexes.remove(0);
+    return foundIndexes;
   }
 
   private static boolean palTrial(String palTry) {
