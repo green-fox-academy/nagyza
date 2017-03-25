@@ -11,6 +11,7 @@ public class TakesLongerStringBuilder {
 
     System.out.println(stringBuilder(quote, "It", "always takes longer than"));
   }
+
   public static StringBuilder stringBuilder(String quote, String beforeString, String  stringToInsert) {
     StringBuilder quota = new StringBuilder(quote);
     int beforeIndex = quote.indexOf(beforeString) + beforeString.length();
