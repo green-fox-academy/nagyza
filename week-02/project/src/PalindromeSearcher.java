@@ -13,12 +13,19 @@ public class PalindromeSearcher {
     for (int i = stringToExamine.length(); i > 2; i--) {
       for (int j = 0; j < i + 1; j++) {
         if (palTrial(stringToExamine.substring(j, i))) {
-          System.out.println(palTrial(stringToExamine.substring(j, i)));
           if (stringToExamine.substring(j, i).length() > 2) {
             foundPalindromes.add(stringToExamine.substring(j, i));
           }
         } else {
-          System.out.println(palTrial(stringToExamine.substring(j, i)));
+        }
+      }
+    }
+    for (String palind : foundPalindromes) {
+      String actualPal = palind;
+      int f = 0;
+      for (int i = 0; i < foundPalindromes.size(); i++) {
+        if (foundPalindromes.contains(actualPal)) {
+          f++;
         }
       }
     }
@@ -26,6 +33,17 @@ public class PalindromeSearcher {
       System.out.println(palind);
     }
     System.out.println(foundPalindromes);
+  }
+
+  public static void removeDuplicates(ArrayList<String> arraySimplify) {
+    for (String palind : arraySimplify) {
+      ArrayList<int> foundindex = new ArrayList<int>();
+      for (int i = 0; i < arraySimplify.size(); i++) {
+        if (palind == arraySimplify.get(i)) {
+          foundindex.add(i);
+        }
+      }
+    }
   }
 
   private static boolean palTrial(String palTry) {
