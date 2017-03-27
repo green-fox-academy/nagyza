@@ -11,7 +11,7 @@ public class Doubled {
   public static void main(String[] args) {
     // Create a method that decrypts the assets/duplicated_chars.txt
     Path filePath = Paths.get("duplicated-chars.txt");
-    Path filePathNorm = Paths.get("duplicated-chars-normalized.txt");
+    Path filePathNorm = Paths.get("simlified-chars.txt");
     ArrayList<StringBuilder> normalLineBuilder = new ArrayList<StringBuilder>();
     try {
       ArrayList<String> lines = (ArrayList<String>) Files.readAllLines(filePath);
