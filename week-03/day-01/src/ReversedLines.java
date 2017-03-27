@@ -10,10 +10,21 @@ import java.util.List;
  */
 public class ReversedLines {
   public static void main(String[] args) {
-    readLines();
+    readLines(readFile());
   }
 
-  public static List<String> readLines() {
+  public static List<StringBuilder> readLines(List<String> linesFromFile) {
+    List<StringBuilder> lines = new ArrayList<>();
+    StringBuilder linesReverse = new StringBuilder();
+    for (String line : linesFromFile) {
+      linesReverse.append(line).reverse();
+      lines.add(linesReverse);
+      System.out.println(lines);
+    }
+    return lines;
+  }
+
+  public static List<String> readFile() {
     List<String> lines = new ArrayList<>();
     try {
       Path filePath = Paths.get("reversed-lines.txt");
