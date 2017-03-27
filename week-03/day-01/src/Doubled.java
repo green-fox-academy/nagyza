@@ -11,16 +11,16 @@ public class Doubled {
   public static void main(String[] args) {
     // Create a method that decrypts the assets/duplicated_chars.txt
     Path filePath = Paths.get("duplicated-chars.txt");
-    StringBuilder normalLine = new StringBuilder();
+    ArrayList<StringBuilder> normalLineBuilder = new ArrayList<StringBuilder>();
     try {
       ArrayList<String> lines = (ArrayList<String>) Files.readAllLines(filePath);
       for (String line : lines) {
-        normalLine.append(normLines(line));
+        normalLineBuilder.add(normLines(line));
       }
+      Files.write(filePath, normalLineBuilder);
     } catch (IOException ex) {
       ex.getMessage();
     }
-    System.out.println(normalLine);
   }
 
   public static StringBuilder normLines(String line) {
