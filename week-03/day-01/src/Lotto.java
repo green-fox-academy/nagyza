@@ -13,15 +13,13 @@ public class Lotto {
     Path filePath = Paths.get("otos.csv");
     try {
       ArrayList<String> lines = (ArrayList<String>) Files.readAllLines(filePath);
-      for (String line : lines) {
-        System.out.println(line);
-      }
+
     } catch (IOException ex) {
       ex.getMessage();
     }
   }
 
-  public static ArrayList getLineFromArrayList(ArrayList<ArrayList<String>> allLines, int index) {
+  public static ArrayList<String> getLineFromArrayList(ArrayList<ArrayList<String>> allLines, Integer index) {
     return allLines.get(index);
   }
 }
