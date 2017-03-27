@@ -16,7 +16,6 @@ public class PalindromeSearcher {
           if (stringToExamine.substring(j, i).length() > 2) {
             foundPalindromes.add(stringToExamine.substring(j, i));
           }
-        } else {
         }
       }
     }
