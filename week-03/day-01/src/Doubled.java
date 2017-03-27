@@ -20,7 +20,7 @@ public class Doubled {
       }
       Files.write(filePathNorm, normalLineBuilder);
     } catch (IOException ex) {
-      ex.getMessage();
+      System.out.println("Something gone wrong in file operation.");
     }
   }
 
