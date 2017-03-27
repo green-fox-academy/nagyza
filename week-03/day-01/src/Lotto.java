@@ -20,4 +20,8 @@ public class Lotto {
       ex.getMessage();
     }
   }
+
+  public static ArrayList getLineFromArrayList(ArrayList<ArrayList<String>> allLines, int index) {
+    return allLines.get(index);
+  }
 }
