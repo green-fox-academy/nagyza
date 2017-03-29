@@ -12,20 +12,26 @@ public class LinePlay {
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/line-play/r1.png]
 
-  linePlay(graphics, 30);
+  linePlay(graphics, 60);
 
   }
 
   public static void linePlay(Graphics g, int stepNum) {
-    int stepSize = 300 / stepNum;
+    int stepSize = 600 / stepNum;
     int x = 0;
     int y = 0;
     int stepSizePlus = 0;
-    for (int i = 0; i < (stepNum - 1) * 2; i++) {
-      stepSizePlus += stepSize;
-      y = x;
-      g.setColor(Color.GREEN);
-      g.drawLine(x, y + stepSizePlus, x + stepSizePlus, 300);
+    for (int i = 0; i < (stepNum - 2); i++) {
+      if ((i % 2) == 0) {
+        stepSizePlus += stepSize;
+        y = x;
+        g.setColor(Color.GREEN);
+        g.drawLine(x, y + stepSizePlus, x + stepSizePlus, 300);
+      } else {
+        y = x;
+        g.setColor(new Color(128, 0, 128));
+        g.drawLine(x + stepSizePlus, y, 300, y + stepSizePlus);
+      }
     }
   }
 
