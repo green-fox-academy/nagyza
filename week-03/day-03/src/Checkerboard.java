@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -11,8 +12,8 @@ public class Checkerboard {
   public static void mainDraw(Graphics graphics){
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/purple-steps-3d/r4.png]
-    int xy = 0;
-    int size = 30;
+    int xy = (int) (Math.random() * 30);
+    int size = (int) (Math.random() * 30);
     int canvasSize = 300;
     drawCheckerboard(graphics, xy, size, canvasSize);
   }
