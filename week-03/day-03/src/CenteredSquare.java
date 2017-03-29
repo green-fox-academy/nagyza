@@ -12,8 +12,9 @@ public class CenteredSquare {
 
     int centerX = 150;
     int centerY = 150;
+    int size = 10;
     graphics.setColor(Color.BLUE);
-    graphics.drawRect(centerX - 5, centerY - 5, 10, 10);
+    graphics.drawRect(centerX - size / 2, centerY - size / 2, size, size);
   }
 
   //    Don't touch the code below
