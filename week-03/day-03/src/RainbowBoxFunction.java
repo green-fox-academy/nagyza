@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -13,7 +14,11 @@ public class RainbowBoxFunction {
     // and draws a square of that size and color to the center of the canvas.
     // create a loop that fills the canvas with rainbow colored squares.
 
-    rainbowBox(graphics, 10, Color.BLUE );
+    Color[] color = {Color.MAGENTA, Color.BLUE, Color.CYAN, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.RED};
+    for (int i = 0; i < 300; i++) {
+      int c = (i + 7) % 7;
+      rainbowBox(graphics, i, color[c]);
+    }
   }
 
   public static void rainbowBox(Graphics g, int size, Color color) {
