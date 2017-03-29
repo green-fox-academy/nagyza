@@ -15,9 +15,9 @@ public class RainbowBoxFunction {
     // create a loop that fills the canvas with rainbow colored squares.
 
     Color[] color = {Color.MAGENTA, Color.BLUE, Color.CYAN, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.RED};
-    for (int i = 0; i < 300; i++) {
+    for (int i = 0; i < 150; i++) {
       int c = (i + 7) % 7;
-      rainbowBox(graphics, i, color[c]);
+      rainbowBox(graphics, i * 2, color[c]);
     }
   }
 
