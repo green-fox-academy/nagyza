@@ -1,6 +1,7 @@
 /**
  * Created by nagyza on 2017.03.30..
  */
+
 public class String3 {
   public static void main(String[] args) {
     // Given a string, compute recursively a new string where all the
