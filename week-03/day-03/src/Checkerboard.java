@@ -37,10 +37,6 @@ public class Checkerboard {
     }
   }
 
-  public static void drawSquare(Graphics gSq, int xy, int size) {
-
-  }
-
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
@@ -58,6 +54,4 @@ public class Checkerboard {
       mainDraw(graphics);
     }
   }
-
-
 }
