@@ -8,21 +8,29 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class GraphicSquareFractal {
   public static void mainDraw(Graphics graphics) {
-    int halfSize = 100;
-    int centre = 110;
-    drawLines(graphics, halfSize, centre);
-
+    int size = 200;
+    int x = 0;
+    int y = 0;
+    graphics.setColor(Color.YELLOW);
+    graphics.fillRect(0, 0, 600, 600);
+    graphics.setColor(Color.BLACK);
+    graphics.drawRect(0, 0, 600, 600);
+    drawLines(graphics, x, y, size);
   }
 
-  public static void drawLines(Graphics g, int halfSize, int center) {
-    g.drawLine(center - halfSize, center - halfSize, center - halfSize, center + halfSize);
-    g.drawLine(center - halfSize / 3, center - halfSize, center - halfSize / 3, center + halfSize);
-    g.drawLine(center + halfSize, center - halfSize, center + halfSize, center + halfSize);
-    g.drawLine(center + halfSize / 3, center - halfSize, center + halfSize / 3, center + halfSize);
-    g.drawLine(center - halfSize, center - halfSize, center + halfSize, center - halfSize);
-    g.drawLine(center - halfSize, center - halfSize / 3, center + halfSize, center - halfSize/3);
-    g.drawLine(center - halfSize, center + halfSize, center + halfSize, center + halfSize);
-    g.drawLine(center - halfSize, center + halfSize / 3, center + halfSize, center + halfSize/3);
+  public static void drawLines(Graphics g, int x, int y, int size) {
+    for (int i = 0; i < 4; i++) {
+      g.drawRect(x + size, y, size, size);
+      g.drawRect(x, y + size, size, size);
+      g.drawRect(x + size, y + 2 *size, size, size);
+      g.drawRect(x + 2 * size, y + size, size, size);
+    }
+    if (size > 3) {
+      drawLines(g, x + size + 1, y, size / 3);
+      drawLines(g, x, y + size + 1, size / 3);
+      drawLines(g, x + size, y + 2 * size + 1, size / 3);
+      drawLines(g, x + 2 * size + 1, y + size + 1, size / 3);
+    }
   }
 
   //    Don't touch the code below
