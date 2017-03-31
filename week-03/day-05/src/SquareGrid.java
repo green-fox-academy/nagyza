@@ -8,10 +8,23 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SquareGrid {
   public static void mainDraw(Graphics graphics) {
     Graphics2D gr = (Graphics2D) graphics;
-    gr.setStroke(new BasicStroke(16));
     int center = 300;
     int size = 200;
-    gr.drawRect(center - size / 2,center - size / 2, size, size);
+//    gr.drawRect(center - size / 2,center - size / 2, size, size);
+    drawSqures(gr, center - size / 2, center - size / 2, size, 16);
+  }
+
+  public static void drawSqures(Graphics2D gr, int centerX, int centerY, int size, int strokeSize) {
+    BasicStroke strokeWith = new BasicStroke(strokeSize);
+    gr.setStroke(strokeWith);
+    gr.drawRect(centerX - size / 2, centerY - size / 2, size, size);
+
+    if (strokeWith.getLineWidth() > 2) {
+      drawSqures(gr, centerX - size / 2, centerY - size / 2, size / 2, strokeSize / 2);
+      drawSqures(gr, centerX - size / 2, centerY + size / 2, size / 2, strokeSize / 2);
+      drawSqures(gr, centerX + size / 2, centerY - size / 2, size / 2, strokeSize / 2);
+      drawSqures(gr, centerX + size / 2, centerY + size / 2, size / 2, strokeSize / 2);
+    }
   }
 
   //    Don't touch the code below
