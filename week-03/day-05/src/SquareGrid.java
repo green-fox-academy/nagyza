@@ -10,7 +10,6 @@ public class SquareGrid {
     Graphics2D gr = (Graphics2D) graphics;
     int center = 300;
     int size = 200;
-//    gr.drawRect(center - size / 2,center - size / 2, size, size);
     drawSqures(gr, center - size / 2, center - size / 2, size, 16);
   }
 
