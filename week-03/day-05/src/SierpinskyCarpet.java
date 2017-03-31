@@ -9,13 +9,11 @@ public class SierpinskyCarpet {
   public static void mainDraw(Graphics graphics) {
     int center = 400;
     int size = 200;
-//    gr.drawRect(center - size / 2,center - size / 2, size, size);
     drawSquares(graphics, center - size / 2, center - size / 2, size);
   }
 
   public static void drawSquares(Graphics gr, int centerX, int centerY, int size) {
     gr.fillRect(centerX - size / 2, centerY - size / 2, size, size);
-
     if (size > 10) {
       drawSquares(gr, centerX - size, centerY - size, size / 3);
       drawSquares(gr, centerX, centerY - size, size / 3);
@@ -25,13 +23,8 @@ public class SierpinskyCarpet {
       drawSquares(gr, centerX, centerY + size, size / 3);
       drawSquares(gr, centerX + size, centerY, size / 3);
       drawSquares(gr, centerX + size, centerY + size, size / 3);
-
-
-
     }
-
   }
-
 
   //    Don't touch the code below
   public static void main(String[] args) {
