@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,10 +16,25 @@ public class Lottery {
 
   public static void main(String[] args) {
     // Create a method that find the 5 most common lottery numbers otos.csv
-
+    storeAllNumbers();
   }
 
-  public static List<String> readFile() {
+  public static List<String> storeAllNumbers() {
+    List<String> allNumbers = new ArrayList<>();
+    List<String> lines = readFileLines();
+    for (String line : lines) {
+      String[] raffledInWeek = Arrays.copyOfRange(line.split(";"), 11, 16);
+      for (String number : raffledInWeek) {
+        allNumbers.add(number);
+      }
+    }
+    for (String trial : allNumbers) {
+      System.out.println(trial);
+    }
+    return allNumbers;
+  }
+
+  public static List<String> readFileLines() {
     List<String> lines = new ArrayList<>();
     try {
       Path filePath = Paths.get(READ_PATH);
