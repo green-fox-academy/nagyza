@@ -37,11 +37,7 @@ public class Lottery {
   }
   
   public static HashMap<String, Integer> countInstances() {
-    String[] numbers = new String[90];
     HashMap<String, Integer> numsInstance = new HashMap<String, Integer>();
-    for (int i = 0; i < 90; i++) {
-      numbers[i] = String.valueOf(i + 1);
-    }
     for (int i = 0; i < 90; i++) {
       numsInstance.put(String.valueOf(i + 1), 0);
     }
