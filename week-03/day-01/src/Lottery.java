@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by nagyza on 2017.04.02..
@@ -17,7 +14,27 @@ public class Lottery {
 
   public static void main(String[] args) {
     // Create a method that find the 5 most common lottery numbers otos.csv
-    findTopInstances();
+    findTopNumbers();
+  }
+
+  public static void findTopNumbers() {
+    List<Integer> topInstances = new ArrayList<>(findTopInstances().size());
+    List<String> topNumbers = new ArrayList<>();
+    HashMap<String, Integer> numsInstance = new HashMap<String, Integer>(countInstances());
+    topInstances.addAll(findTopInstances());
+    for (Map.Entry<String, Integer> entry : numsInstance.entrySet()) {
+      String key = entry.getKey();
+      Integer value = entry.getValue();
+      for (int i = 0; i < topInstances.size(); i++) {
+        if (value.equals(topInstances.get(i))) {
+          topNumbers.add(key);
+        }
+      }
+    }
+    System.out.println("The most frequent numbers from 1957: ");
+    for (String i : topNumbers) {
+      System.out.print(i + " ");
+    }
   }
 
   public static List<Integer> findTopInstances() {
