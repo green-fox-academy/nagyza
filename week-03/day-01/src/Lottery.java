@@ -17,12 +17,25 @@ public class Lottery {
 
   public static void main(String[] args) {
     // Create a method that find the 5 most common lottery numbers otos.csv
-//    storeAllNumbers();
-    for (int i = 0; i <90; i++) {
-      System.out.println((i + 1) +"-" + countInstances().get(String.valueOf(i + 1)));
-    }
+    findTopInstances();
   }
 
+  public static List<Integer> findTopInstances() {
+    List<Integer> allInstances = new ArrayList<>();
+    List<Integer> topInstances = new ArrayList<>();
+    allInstances.addAll(countInstances().values());
+    allInstances.sort(null);
+    for (int i = allInstances.size() - 1; i > allInstances.size() - 6; i--) {
+      topInstances.add(allInstances.get(i));
+    }
+    for (int i = 5; i > 1; i--) {
+      if (topInstances.get(i - 1).equals(topInstances.get(i - 2))) {
+        topInstances.remove(i - 1);
+      }
+    }
+    return topInstances;
+  }
+  
   public static HashMap<String, Integer> countInstances() {
     String[] numbers = new String[90];
     HashMap<String, Integer> numsInstance = new HashMap<String, Integer>();
