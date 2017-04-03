@@ -1,7 +1,7 @@
 /**
  * Created by nagyza on 2017.04.03..
  */
-class PostIt {
+public class PostIt {
   String backgroundColor;
   String text;
   String textColor;
