@@ -9,9 +9,6 @@ public class Sharpie {
   public Sharpie(String color, double width) {
     this.color = color;
     this.width = width;
-  }
-
-  public Sharpie(double inkAmount) {
     this.inkAmount = 100.0;
   }
 
