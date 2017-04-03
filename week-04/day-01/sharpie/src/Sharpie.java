@@ -12,8 +12,27 @@ public class Sharpie {
     this.inkAmount = 100.0;
   }
 
+  public String getColor() {
+    return color;
+  }
+
+  public double getWidth() {
+    return width;
+  }
+
+  public double getInkAmount() {
+    return inkAmount;
+  }
+
   public void use() {
     this.inkAmount -= 1;
   }
 
+  @Override
+  public String toString() {
+    return  "color='" + color + '\'' +
+            ", width=" + width +
+            ", inkAmount=" + inkAmount +
+            '}';
+  }
 }
