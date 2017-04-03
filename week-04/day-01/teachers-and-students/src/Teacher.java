@@ -32,4 +32,12 @@ public class Teacher {
     student.learn();
     satisfacton++;
   }
+
+  @Override
+  public String toString() {
+    return "Teacher{" +
+            "name='" + name + '\'' +
+            ", satisfacton=" + satisfacton +
+            '}';
+  }
 }
