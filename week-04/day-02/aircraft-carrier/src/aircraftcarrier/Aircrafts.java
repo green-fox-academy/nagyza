@@ -23,17 +23,13 @@ public class Aircrafts {
     this.allDamage = this.maxAmmo * this.baseDamage; //todo this is unnecessary maybe
   }
 
-  public void refill() {
-    this.ammo += this.neededAmmo(); //todo needed amount of ammo will not always available
+  public void refill(int neededAmmo) {
+    this.ammo += neededAmmo;
   }
 
   public int fight() {
     this.ammo = 0;
     return ammo * baseDamage;
-  }
-
-  public int neededAmmo() {
-    return maxAmmo - ammo;
   }
 
   public int getAmmo() {
