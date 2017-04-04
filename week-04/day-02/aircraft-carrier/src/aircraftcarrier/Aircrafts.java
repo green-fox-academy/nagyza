@@ -9,7 +9,6 @@ public class Aircrafts {
   private int baseDamage;
   private String type;
   private int typeNumber;
-  private int allDamage;
 
   public Aircrafts(String type) {
     this.type = type;
@@ -22,11 +21,14 @@ public class Aircrafts {
       this.maxAmmo = 12;
       this.baseDamage = 50;
     }
-    this.allDamage = this.maxAmmo * this.baseDamage; //todo this is unnecessary maybe
   }
 
-  public void refill(int neededAmmo) {
+  protected void autoRefill(int neededAmmo) {
     this.ammo += neededAmmo;
+  }
+
+  public void refill() {
+    this.ammo = this.maxAmmo;
   }
 
   public int fight() {
@@ -47,7 +49,7 @@ public class Aircrafts {
   }
 
   public String getStatus() {
-    return "Type: " + type + ", Ammo: " + ammo + ", Base Damage: " + baseDamage + "All Damage: " + (ammo * baseDamage);
+    return "Type: " + type + ", Ammo: " + ammo + ", Base Damage: " + baseDamage + ", All Damage: " + (ammo * baseDamage);
   }
 
 }
