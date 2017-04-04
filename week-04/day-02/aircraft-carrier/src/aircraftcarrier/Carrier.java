@@ -85,6 +85,7 @@ public class Carrier {
 
   public void setHealth(int fightDamage) {
     if (fightDamage > this.health) {
+      this.health -= fightDamage;
       System.out.println("*** Game over! *** \n The carrier is sunken! \n" + this.getStatus());
     } else {
       this.health -= fightDamage;
