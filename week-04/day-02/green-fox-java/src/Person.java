@@ -21,7 +21,7 @@ public class Person {
   }
 
   protected void introduce() {
-    System.out.println("Hi, I'm " + this.name + " a " + this.age + " year old " + gender + ".");
+    System.out.println("Hi, I'm " + name + " a " + age + " year old " + gender + ".");
   }
 
   public String getGoal() {
