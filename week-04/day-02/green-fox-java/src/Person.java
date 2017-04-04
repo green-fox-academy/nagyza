@@ -6,7 +6,6 @@ public class Person {
   private String name;
   private int age;
   private String gender;
-  private final String goal = "My goal is: Live for the moment!";
 
   public Person() {
     this.name = "Jane Doe";
@@ -24,7 +23,7 @@ public class Person {
     System.out.println("Hi, I'm " + name + " a " + age + " year old " + gender + ".");
   }
 
-  public String getGoal() {
-    return goal;
+  public void getGoal() {
+    System.out.println("My goal is: Live for the moment!");
   }
 }
