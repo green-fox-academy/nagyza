@@ -28,4 +28,16 @@ public class Person {
   public void getGoal() {
     System.out.println("My goal is: Live for the moment!");
   }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public int getAge() {
+    return this.age;
+  }
+
+  public String getGender() {
+    return this.gender;
+  }
 }
