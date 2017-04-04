@@ -1,3 +1,5 @@
+package greenfox;
+
 /**
  * Created by nagyza on 2017.04.04..
  */
