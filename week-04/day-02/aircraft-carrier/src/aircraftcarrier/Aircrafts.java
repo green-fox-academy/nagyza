@@ -8,10 +8,12 @@ public class Aircrafts {
   private int maxAmmo;
   private int baseDamage;
   private String type;
+  private int typeNumber;
   private int allDamage;
 
   public Aircrafts(String type) {
     this.type = type;
+    this.typeNumber = Integer.parseInt(type.substring(1, 3));
     this.ammo = 0;
     if (type.equals("F16")) {
       this.maxAmmo = 8;
@@ -38,6 +40,10 @@ public class Aircrafts {
 
   public String getType() {
     return type;
+  }
+
+  public int getTypeNumber() {
+    return typeNumber;
   }
 
   public String getStatus() {
