@@ -14,12 +14,15 @@ public class Carrier {
   private int health;
   private int totalDamage;
   private int fightDamage;
+  private String carrierClass;
 
   public Carrier() {
     this.storedAircrafts = new ArrayList<>();
     this.ammoStorage = 2500;
-    this.health = 3000;
+    this.health = 10000;
     this.totalDamage = 0;
+    this.carrierClass = "Essex";
+    this.fightDamage = 0;
   }
 
   public Carrier(int ammoStorage, int health) {
@@ -27,6 +30,12 @@ public class Carrier {
     this.ammoStorage = ammoStorage;
     this.health = health;
     this.totalDamage = 0;
+    this.fightDamage = 0;
+    if (this.ammoStorage > 2500) {
+      this.carrierClass = "Nimitz";
+    } else {
+      this.carrierClass = "Essex";
+    }
   }
 
   public void addAircraft(String type) {
@@ -46,38 +55,42 @@ public class Carrier {
         System.out.println("There is no more ammo int the Ammo Storage");
         break;
       } else if (aircraft.getType().equals("F35") && ammoStorage >= 12) {
-        aircraft.refill(12);
+        aircraft.autoRefill(12);
+        this.ammoStorage -= 12;
       } else if (aircraft.getType().equals("F35")) {
-        aircraft.refill(ammoStorage);
+        aircraft.autoRefill(ammoStorage);
+        this.ammoStorage = 0;
       } else if (aircraft.getType().equals("F16") && ammoStorage >= 8) {
-        aircraft.refill(8);
+        aircraft.autoRefill(8);
+        this.ammoStorage -= 8;
       } else {
-        aircraft.refill(ammoStorage);
+        aircraft.autoRefill(ammoStorage);
+        this.ammoStorage = 0;
       }
     }
   }
 
-  public void fight(Carrier carrier) {
+  public void fight(Carrier attackedCarrier) {
     for (Aircrafts aircraft : storedAircrafts) {
       if (aircraft.getType().equals("F35")) {
-        this.totalDamage = aircraft.fight();
-        this.fightDamage = aircraft.fight();
+        this.fightDamage += aircraft.fight();
+        this.totalDamage += this.fightDamage;
       } else {
-        this.totalDamage = aircraft.fight();
-        this.fightDamage = aircraft.fight();
+        this.fightDamage += aircraft.fight();
+        this.totalDamage += this.fightDamage;
       }
     }
-    carrier.setHealth(fightDamage);
-    this.fightDamage = 0;
+    attackedCarrier.setHealth(this.fightDamage);
   }
 
-  public void setHealth(int damage) {
-    this.health -= damage;
+  public void setHealth(int fightDamage) {
+    this.health -= fightDamage;
   }
 
   public String getStatus() {
     String status = "";
-    status = status + "Aircraft count: " + storedAircrafts.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: \n";
+    status = status + "Carrier Class: " + this.carrierClass + ", Aircraft count: " + storedAircrafts.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: " +
+            this.totalDamage + ", Health: " + this.health + "\n";
     for (Aircrafts aircraft : storedAircrafts) {
       status = status + aircraft.getStatus() + "\n";
     }
