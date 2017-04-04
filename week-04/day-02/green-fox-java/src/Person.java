@@ -3,9 +3,9 @@
  */
 public class Person {
 
-  protected String name;
-  protected int age;
-  protected String gender;
+  private String name;
+  private int age;
+  private String gender;
   private final String goal = "My goal is: Live for the moment!";
 
   public Person() {
