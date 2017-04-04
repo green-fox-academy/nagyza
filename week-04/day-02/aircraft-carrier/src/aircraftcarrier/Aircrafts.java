@@ -32,8 +32,9 @@ public class Aircrafts {
   }
 
   public int fight() {
+    int ammoOut = this.ammo;
     this.ammo = 0;
-    return ammo * baseDamage;
+    return ammoOut * baseDamage;
   }
 
   public int getAmmo() {
