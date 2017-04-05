@@ -8,6 +8,4 @@ public class ApplesTest {
     Apples apples1 = new Apples();
     assertEquals("apple", apples1.getApple());
   }
-
-
 }
