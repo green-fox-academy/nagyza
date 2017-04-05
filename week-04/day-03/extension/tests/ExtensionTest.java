@@ -13,13 +13,13 @@ class ExtensionTest {
   Extension extension = new Extension();
 
   @Test
-  void testAdd_2and3is5() {
-    assertEquals(5, extension.add(2, 3));
+  void testAdd_3and3is6() {
+    assertEquals(6, extension.add(3, 3));
   }
 
   @Test
-  void testAdd_1and4is5() {
-    assertEquals(5, extension.add(1, 4));
+  void testAdd_3and4is7() {
+    assertEquals(7, extension.add(3, 4));
   }
 
   @Test
