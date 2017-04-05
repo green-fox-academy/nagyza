@@ -22,4 +22,12 @@ public class SumTest {
     Sum summarize = new Sum(numbersToSummarize);
     assertEquals(0, summarize.sum());
   }
+
+  @Test
+  public void sumTestOneSizedArrayList() throws Exception {
+    ArrayList<Integer> numbersToSummarize = new ArrayList<>();
+    numbersToSummarize.add(10);
+    Sum summarize = new Sum(numbersToSummarize);
+    assertEquals(10, summarize.sum());
+  }
 }
