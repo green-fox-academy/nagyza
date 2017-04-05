@@ -17,4 +17,13 @@ public class AnagramCheckerTest {
     String word2 = "vamali";
     assertTrue(trial.isAnagram(word1, word2));
   }
+
+  @Test
+  public void isAnagramOneEmptyString() throws Exception {
+    AnagramChecker trial = new AnagramChecker();
+    String word1 = "valami";
+    String word2 = "";
+    assertFalse(trial.isAnagram(word1, word2));
+  }
+
 }
