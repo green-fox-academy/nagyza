@@ -30,4 +30,12 @@ public class SumTest {
     Sum summarize = new Sum(numbersToSummarize);
     assertEquals(10, summarize.sum());
   }
+
+  @Test
+  public void sumTestNullArrayList() throws Exception {
+    ArrayList<Integer> numbers = new ArrayList<>();
+    numbers = null;
+    Sum summarize = new Sum(numbers);
+    assertEquals(0 ,summarize.sum());
+  }
 }
