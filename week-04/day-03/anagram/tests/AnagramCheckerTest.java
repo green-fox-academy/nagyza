@@ -26,4 +26,11 @@ public class AnagramCheckerTest {
     assertFalse(trial.isAnagram(word1, word2));
   }
 
+  @Test
+  public void isAnagramAnyNullStrings() throws Exception {
+    AnagramChecker trial = new AnagramChecker();
+    String word1 = "aaaa";
+    String word2 = null;
+    assertFalse(trial.isAnagram(word1, word2));
+  }
 }
