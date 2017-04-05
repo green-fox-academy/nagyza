@@ -16,4 +16,10 @@ public class SumTest {
     assertEquals(10, summarize.sum());
   }
 
+  @Test
+  public void sumTestEmptyArrayList() throws Exception {
+    ArrayList<Integer> numbersToSummarize = new ArrayList<>();
+    Sum summarize = new Sum(numbersToSummarize);
+    assertEquals(0, summarize.sum());
+  }
 }
