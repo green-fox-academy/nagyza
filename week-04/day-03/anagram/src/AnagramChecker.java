@@ -14,7 +14,10 @@ public class AnagramChecker {
   }
 
   public boolean isAnagram (String word1, String word2) {
-    if (sortChars(word1).equals(sortChars(word2))) {
+    if (word1.length() == 0 || word2.length() == 0) {
+      System.out.println("It doesn't make sense to examine empty string!");
+      return false;
+    } else if (sortChars(word1).equals(sortChars(word2))) {
       return true;
     } else {
       return false;
