@@ -68,6 +68,21 @@ class ExtensionTest {
   }
 
   @Test
+  void testTranslate_megetteEndVowel() {
+    assertEquals("mevegevetteve", extension.translate("megette"));
+  }
+
+  @Test
+  void testTranslate_elveszitBeginVowel() {
+    assertEquals("evelveveszivit", extension.translate("elveszit"));
+  }
+
+  @Test
+  void testTranslate_etteBeginAndEndVowel() {
+    assertEquals("evetteve", extension.translate("ette"));
+  }
+
+  @Test
   void testTranslate_kolbice() {
     assertEquals("lavagovopuvus", extension.translate("lagopus"));
   }
