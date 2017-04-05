@@ -13,9 +13,13 @@ public class Sum {
   }
 
   public int sum() {
-    for (Integer number : numbersToSummarize) {
-      this.result += number;
+    if (numbersToSummarize != null) {
+      for (Integer number : numbersToSummarize) {
+        this.result += number;
+      }
+      return this.result;
+    } else {
+      return 0;
     }
-    return this.result;
   }
 }
