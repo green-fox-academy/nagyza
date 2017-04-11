@@ -1,5 +1,5 @@
 
-public class Character {
+public class GameCharacter {
   private int maxHealthPoint;
   private int currentHealthPoint;
   private int defendPoint;
