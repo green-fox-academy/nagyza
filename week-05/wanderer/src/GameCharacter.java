@@ -11,6 +11,7 @@ public class GameCharacter {
   private int positionY;
   private String imageName;
   private PositionedImage imageDraw;
+  public static Board board = new Board();
 
   public GameCharacter(String type, int level, int positionX, int positionY) {
     this.type = type;
@@ -32,25 +33,28 @@ public class GameCharacter {
     } // todo create a boss
   }
 
-  public void turnLeft() {
-    this.imageName = "assets/hero-left.png";
-  }
-
-  public void turnRight() {
-    this.imageName = "assets/hero-right.png";
-  }
-
-  public void turnUp() {
-    this.imageName = "assets/hero-up.png";
-  }
-
-  public void turnDown() {
-    this.imageName = "assets/hero-down.png";
-  }
-
-  public void setPosition(int posX, int posY) {
-    this.positionX = posX;
-    this.positionY = posY;
+  public void whereToGo(String direction) {
+    if (direction.equals("up")) {
+      this.imageName = "assets/hero-up.png";
+      if (this.positionY > 0 && board.getTilesOrder()[positionY - 1][positionX] != 1) {
+        this.positionY -= 1;
+      }
+    } else if (direction.equals("down")) {
+      this.imageName = "assets/hero-down.png";
+      if (this.positionY < 9 && board.getTilesOrder()[positionY + 1][positionX] != 1) {
+        this.positionY += 1;
+      }
+    } else if (direction.equals("left")) {
+      this.imageName = "assets/hero-left.png";
+      if (this.positionX > 0 && board.getTilesOrder()[positionY][positionX - 1] != 1) {
+        this.positionX -= 1;
+      }
+    } else if (direction.equals("right")) {
+      this.imageName = "assets/hero-right.png";
+      if (this.positionX < 9 && board.getTilesOrder()[positionY][positionX + 1] != 1) {
+        this.positionX += 1;
+      }
+    }
   }
 
   PositionedImage getImageDraw() {

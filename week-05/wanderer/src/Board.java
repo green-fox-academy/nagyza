@@ -5,8 +5,6 @@ import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
 
-  int testBoxX;
-  int testBoxY;
   int characterX;
   int characterY;
   GameCharacter gameHero;
@@ -16,17 +14,20 @@ public class Board extends JComponent implements KeyListener {
                         {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
                         {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
                         {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
-                        {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+                        {0, 1, 0, 1, 0, 1, 1, 0, 0, 0},
                         {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
                         {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
                         {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
-
   public Board() {
     characterX = 0;
     characterY = 0;
     gameHero = new GameCharacter("hero", 1, characterX, characterY);
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
+  }
+
+  public int[][] getTilesOrder() {
+    return tilesOrder;
   }
 
   @Override
@@ -75,29 +76,16 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP && characterY > 0 && tilesOrder[characterY - 1][characterX] != 1) {
-      characterY -= 1;
-      gameHero.turnUp();
-    } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-      gameHero.turnUp();
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && characterY < 9 && tilesOrder[characterY + 1][characterX] != 1) {
-      characterY += 1;
-      gameHero.turnDown();
+    if (e.getKeyCode() == KeyEvent.VK_UP ) {
+      gameHero.whereToGo("up");
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      gameHero.turnDown();
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && characterX > 0 && tilesOrder[characterY][characterX - 1] != 1) {
-      characterX -= 1;
-      gameHero.turnLeft();
+      gameHero.whereToGo("down");
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      gameHero.turnLeft();
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && characterX < 9 && tilesOrder[characterY][characterX + 1] != 1) {
-      characterX += 1;
-      gameHero.turnRight();
+      gameHero.whereToGo("left");
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      gameHero.turnRight();
+      gameHero.whereToGo("right");
     }
     // and redraw to have a new picture with the new coordinates
-    gameHero.setPosition(characterX, characterY);
     repaint();
   }
 }
