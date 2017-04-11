@@ -32,16 +32,29 @@ public class GameCharacter {
     } // todo create a boss
   }
 
-  public void setPositionX(int positionX) {
-    this.positionX = positionX;
+  public void turnLeft() {
+    this.imageName = "assets/hero-left.png";
   }
 
-  public void setPositionY(int positionY) {
-    this.positionY = positionY;
+  public void turnRight() {
+    this.imageName = "assets/hero-right.png";
+  }
+
+  public void turnUp() {
+    this.imageName = "assets/hero-up.png";
+  }
+
+  public void turnDown() {
+    this.imageName = "assets/hero-down.png";
+  }
+
+  public void setPosition(int posX, int posY) {
+    this.positionX = posX;
+    this.positionY = posY;
   }
 
   PositionedImage getImageDraw() {
-    return this.imageDraw;
+    return new PositionedImage(this.imageName, this.positionX, this.positionY);
   }
 
   int getDieRoll() {
