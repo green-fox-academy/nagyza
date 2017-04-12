@@ -1,0 +1,28 @@
+
+public class BoardCreator {
+
+  private int[][] tilesOrder = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
+          {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
+          {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
+          {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+          {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
+          {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
+          {0, 1, 0, 1, 0, 1, 1, 0, 0, 0},
+          {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
+          {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
+          {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
+
+  private Hero gameHero;
+
+  public BoardCreator() {
+    gameHero = new Hero(1);
+  }
+
+  public Hero getGameHero() {
+    return gameHero;
+  }
+
+  public int[][] getTilesOrder() {
+    return tilesOrder;
+  }
+}
