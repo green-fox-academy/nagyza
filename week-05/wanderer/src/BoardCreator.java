@@ -24,22 +24,69 @@ public class BoardCreator {
     allMonsters = new ArrayList<>();
     gameHero = new Hero();
     level = 1;
+    fillAllMonsters();
   }
 
   private void fillAllMonsters() {
-    for (int i = 0; i < 3; i++) {
-
+    while (allMonsters.isEmpty()) {
+      Monster createdMonster = createMonster("assets/boss.png");
+      if (allMonsters.isEmpty() && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
+        allMonsters.add(createdMonster);
+      }
+    }
+    while (allMonsters.size() < 4) {
+      int counter = 0;
+      Monster createdMonster = createMonster("assets/skeleton.png");
+      for (Monster actualMonster : allMonsters) {
+        if (isNotOnMonstersPlace(actualMonster, createdMonster)
+                && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
+          counter++;
+        }
+      }
+      if (allMonsters.size() == counter) {
+        allMonsters.add(createdMonster);
+      }
     }
   }
 
-  private Monster createMonster() {
-    Monster actualMonster = new Monster(randomCoord());
-    return actualMonster;
+  private boolean isNotOnMonstersPlace(Monster actualMonster, Monster createdMonster) {
+    if (actualMonster.getPositionX() != createdMonster.getPositionX()
+            || actualMonster.getPositionY() != createdMonster.getPositionY()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private boolean isNotOnHerosPlace(Monster createdMonster) {
+    if (createdMonster.getPositionX() != gameHero.getPositionX()
+            || createdMonster.getPositionY() != gameHero.getPositionY()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private boolean isNotOnWall(Monster createdMonster) {
+    if (tilesOrder[createdMonster.getPositionY()][createdMonster.getPositionX()] != 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private Monster createMonster(String image) {
+    Monster createdMonster = new Monster(randomCoord(), image);
+    return createdMonster;
   }
 
   private int[] randomCoord() {
     int[] place = {(int) (Math.random() * 9) + 1, (int) (Math.random() * 9) + 1};
     return place;
+  }
+
+  public ArrayList<Monster> getAllMonsters() {
+    return allMonsters;
   }
 
   public Hero getGameHero() {
