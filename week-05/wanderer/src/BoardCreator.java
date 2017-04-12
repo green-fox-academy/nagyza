@@ -14,10 +14,7 @@ public class BoardCreator {
           {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
   int level;
   private Hero gameHero;
-//  private Monster skeleton1;
-//  private Monster skeleton2;
-//  private Monster skeleton3;
-//  private Monster boss;
+  private int monsterToKillIndex;
   private ArrayList<Monster> allMonsters;
 
   public BoardCreator() {
@@ -27,11 +24,35 @@ public class BoardCreator {
     fillAllMonsters();
   }
 
+  public void fight() {
+    Monster monsterToKill = allMonsters.get(monsterToKillIndex);
+    int counter = 0;
+    while (gameHero.currentHealthPoint > 0 && monsterToKill.currentHealthPoint > 0) {
+      if (counter % 2 == 0) {
+        monsterToKill.setCurrentHealthPoint(monsterToKill.getCurrentHealthPoint() - gameHero.getStrikeValue());
+      } else {
+        gameHero.setCurrentHealthPoint(gameHero.getCurrentHealthPoint() - monsterToKill.getStrikeValue());
+      }
+      counter++;
+    }
+    if (monsterToKill.currentHealthPoint < 0) {
+      allMonsters.remove(monsterToKillIndex);
+      gameHero.setLevel();
+    } else {
+      System.out.println("Game Over!");
+    }
+  }
+
+  public Monster getMonsterToKill() { // only for test reasons
+    return allMonsters.get(monsterToKillIndex);
+  }
+
   public boolean isFightSituation(Hero hero) {
     int counter = 0;
     for (Monster monster : allMonsters) {
       if (!isNotOnMonstersPlace(hero, monster)) {
         counter++;
+        monsterToKillIndex = allMonsters.indexOf(monster);
       }
     }
     if (counter > 0) {
@@ -55,6 +76,9 @@ public class BoardCreator {
         if (isNotOnMonstersPlace(actualMonster, createdMonster)
                 && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
           counter++;
+          if (counter == 1) {
+            createdMonster.setKeyTrue();
+          }
         }
       }
       if (allMonsters.size() == counter) {
@@ -90,7 +114,7 @@ public class BoardCreator {
   }
 
   private Monster createMonster(String image) {
-    Monster createdMonster = new Monster(randomCoord(), image);
+    Monster createdMonster = new Monster(randomCoord(), image, false);
     return createdMonster;
   }
 
