@@ -5,13 +5,11 @@ public class Hero {
   private int defendPoint;
   private int strikePoint;
   private int dieRoll;
-  private String type;
   private int level;
   private int positionX;
   private int positionY;
   private String imageName;
   private PositionedImage imageDraw;
-  private BoardCreator board;
 
   public Hero() {
     this.level = 1;
