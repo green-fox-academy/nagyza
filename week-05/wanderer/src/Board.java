@@ -5,41 +5,27 @@ import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
 
-  int characterX;
-  int characterY;
-  GameCharacter gameHero;
-  int[][] tilesOrder = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
-                        {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
-                        {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
-                        {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-                        {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
-                        {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
-                        {0, 1, 0, 1, 0, 1, 1, 0, 0, 0},
-                        {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
-                        {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
-                        {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
+  BoardCreator gameBoard;
+  Hero gameHero;
+
   public Board() {
-    characterX = 0;
-    characterY = 0;
-    gameHero = new GameCharacter("hero", 1, characterX, characterY);
+    gameBoard = new BoardCreator();
+    gameHero = gameBoard.getGameHero();
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
-  }
-
-  public int[][] getTilesOrder() {
-    return tilesOrder;
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
+
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
     int tilePosX = 0;
     int tilePosY = 0;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        if (tilesOrder[j][i] == 0) {
+        if (gameBoard.getTilesOrder()[j][i] == 0) {
           PositionedImage image = new PositionedImage("assets/floor.png", tilePosX, tilePosY);
           image.draw(graphics);
         } else {
@@ -77,13 +63,13 @@ public class Board extends JComponent implements KeyListener {
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP ) {
-      gameHero.whereToGo("up");
+      gameHero.whereToGo("up", gameBoard.getTilesOrder());
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      gameHero.whereToGo("down");
+      gameHero.whereToGo("down", gameBoard.getTilesOrder());
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      gameHero.whereToGo("left");
+      gameHero.whereToGo("left", gameBoard.getTilesOrder());
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      gameHero.whereToGo("right");
+      gameHero.whereToGo("right", gameBoard.getTilesOrder());
     }
     // and redraw to have a new picture with the new coordinates
     repaint();
