@@ -1,15 +1,27 @@
-
 public class GameCharacter {
   int maxHealthPoint;
   int currentHealthPoint;
   int defendPoint;
   int strikePoint;
   int level;
-  int dieRoll;
   int positionX;
   int positionY;
+  int strikeValue;
   String imageName;
   PositionedImage imageDraw;
+
+  public int getStrikeValue() {
+    strikeValue = strikePoint * getDieRoll() * 2;
+    return strikeValue;
+  }
+
+  public int getCurrentHealthPoint() {
+    return currentHealthPoint;
+  }
+
+  public void setCurrentHealthPoint(int currentHealthPoint) {
+    this.currentHealthPoint = currentHealthPoint;
+  }
 
   public void moveUp(int[][] tilesOrder) {
     whereToGo("up", tilesOrder);
@@ -60,7 +72,7 @@ public class GameCharacter {
   }
 
   int getDieRoll() {
-    this.dieRoll = (int) (Math.random() * 6) + 1;
-    return this.dieRoll;
+    int dieRoll = (int) (Math.random() * 6) + 1;
+    return dieRoll;
   }
 }
