@@ -15,7 +15,7 @@ public class BoardCreator {
   private Hero gameHero;
 
   public BoardCreator() {
-    gameHero = new Hero(1);
+    gameHero = new Hero();
   }
 
   public Hero getGameHero() {
