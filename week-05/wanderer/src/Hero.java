@@ -13,6 +13,10 @@ public class Hero extends GameCharacter {
     imageDraw = new PositionedImage(imageName, positionX, positionY);
   }
 
+  public void setLevel() {
+    level++;
+  }
+
   @Override
   public void moveUp(int[][] tilesOrder) {
     imageName = "assets/hero-up.png";
@@ -35,5 +39,11 @@ public class Hero extends GameCharacter {
   public void moveRight(int[][] tilesOrder) {
     imageName = "assets/hero-right.png";
     whereToGo("right", tilesOrder);
+  }
+
+  @Override
+  public String toString() {
+    return "Lvl " + level + " HP: " + currentHealthPoint + "/" + maxHealthPoint
+            + " DP: " + defendPoint + " SP: " +strikePoint + " |" + positionX + ":" + positionY;
   }
 }
