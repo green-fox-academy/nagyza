@@ -15,6 +15,9 @@ public class Hero extends GameCharacter {
 
   public void setLevel() {
     level++;
+    maxHealthPoint += getDieRoll();
+    defendPoint += getDieRoll();
+    strikePoint += getDieRoll();
   }
 
   @Override
