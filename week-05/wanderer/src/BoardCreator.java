@@ -21,9 +21,20 @@ public class BoardCreator {
   private ArrayList<Monster> allMonsters;
 
   public BoardCreator() {
-    this.allMonsters = new ArrayList<>();
+    allMonsters = new ArrayList<>();
     gameHero = new Hero();
-    this.level = 1;
+    level = 1;
+  }
+
+  private void fillAllMonsters() {
+    for (int i = 0; i < 3; i++) {
+
+    }
+  }
+
+  private Monster createMonster() {
+    Monster actualMonster = new Monster(randomCoord());
+    return actualMonster;
   }
 
   private int[] randomCoord() {
