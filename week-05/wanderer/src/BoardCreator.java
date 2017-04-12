@@ -14,10 +14,10 @@ public class BoardCreator {
           {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
   int level;
   private Hero gameHero;
-  private Monster skeleton1;
-  private Monster skeleton2;
-  private Monster skeleton3;
-  private Monster boss;
+//  private Monster skeleton1;
+//  private Monster skeleton2;
+//  private Monster skeleton3;
+//  private Monster boss;
   private ArrayList<Monster> allMonsters;
 
   public BoardCreator() {
@@ -25,6 +25,20 @@ public class BoardCreator {
     gameHero = new Hero();
     level = 1;
     fillAllMonsters();
+  }
+
+  public boolean isFightSituation(Hero hero) {
+    int counter = 0;
+    for (Monster monster : allMonsters) {
+      if (!isNotOnMonstersPlace(hero, monster)) {
+        counter++;
+      }
+    }
+    if (counter > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private void fillAllMonsters() {
@@ -49,9 +63,9 @@ public class BoardCreator {
     }
   }
 
-  private boolean isNotOnMonstersPlace(Monster actualMonster, Monster createdMonster) {
-    if (actualMonster.getPositionX() != createdMonster.getPositionX()
-            || actualMonster.getPositionY() != createdMonster.getPositionY()) {
+  private boolean isNotOnMonstersPlace(GameCharacter actualCharacter, Monster createdMonster) {
+    if (actualCharacter.getPositionX() != createdMonster.getPositionX()
+            || actualCharacter.getPositionY() != createdMonster.getPositionY()) {
       return true;
     } else {
       return false;
