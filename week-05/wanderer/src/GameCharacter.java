@@ -10,9 +10,17 @@ public class GameCharacter {
   String imageName;
   PositionedImage imageDraw;
 
+  public int getStrikePoint() {
+    return strikePoint;
+  }
+
   public int getStrikeValue() {
     strikeValue = strikePoint * getDieRoll() * 2;
     return strikeValue;
+  }
+
+  public int getDefendPoint() {
+    return defendPoint;
   }
 
   public int getCurrentHealthPoint() {
