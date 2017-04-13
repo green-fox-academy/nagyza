@@ -1,7 +1,7 @@
 public class Monster extends GameCharacter {
   boolean key;
 
-  public Monster(int[] positionXY, String image, boolean key) {
+  public Monster(int[] positionXY, String image) {
     positionX = positionXY[0];
     positionY = positionXY[1];
     imageName = image;
@@ -17,16 +17,22 @@ public class Monster extends GameCharacter {
       currentHealthPoint = maxHealthPoint;
       defendPoint = (int) Math.ceil((double)level / 2 ) * getDieRoll();
       strikePoint = level * getDieRoll();
-      this.key = key;
+      key = false;
     }
-  }
-
-  @Override
-  public String toString() {
-    return "M HP" + maxHealthPoint + ":" + currentHealthPoint + " DP" + defendPoint + " SP" + strikePoint;
   }
 
   public void setKeyTrue() {
     key = true;
+    imageName = "assets/skeletonKey.png";
+  }
+
+  public boolean isKey() {
+    return key;
+  }
+
+  @Override
+  public String toString() {
+    return imageName.substring(7, 10) + ":" + maxHealthPoint + ":" + currentHealthPoint + " DP" + defendPoint + " SP" + strikePoint
+            + "x" + getPositionX() + "y" + getPositionY();
   }
 }
