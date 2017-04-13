@@ -29,17 +29,27 @@ public class BoardCreator {
     int counter = 0;
     while (gameHero.currentHealthPoint > 0 && monsterToKill.currentHealthPoint > 0) {
       if (counter % 2 == 0) {
-        monsterToKill.setCurrentHealthPoint(monsterToKill.getCurrentHealthPoint() - gameHero.getStrikeValue());
+        if (gameHero.getStrikeValue() > monsterToKill.getDefendPoint()) {
+          monsterToKill.setCurrentHealthPoint(monsterToKill.getCurrentHealthPoint() - gameHero.getStrikePoint());
+        }
       } else {
-        gameHero.setCurrentHealthPoint(gameHero.getCurrentHealthPoint() - monsterToKill.getStrikeValue());
+        if (monsterToKill.getStrikeValue() > gameHero.getDefendPoint()) {
+          gameHero.setCurrentHealthPoint((gameHero.getCurrentHealthPoint()) - (monsterToKill.getStrikePoint()));
+        }
       }
       counter++;
     }
-    if (monsterToKill.currentHealthPoint < 0) {
-      allMonsters.remove(monsterToKillIndex);
-      gameHero.setLevel();
+    if (monsterToKill.currentHealthPoint <= 0) {
+      if (monsterToKill.isKey()) {
+        for (int i = allMonsters.size() - 1; i > -1; i--) {
+          allMonsters.remove(i);
+        }
+      } else {
+        allMonsters.remove(monsterToKillIndex);
+        gameHero.setLevel();
+      }
     } else {
-      System.out.println("Game Over!");
+      gameHero.setImageName("assets/hero-dead.png");
     }
   }
 
@@ -70,13 +80,13 @@ public class BoardCreator {
       }
     }
     while (allMonsters.size() < 4) {
-      int counter = 0;
       Monster createdMonster = createMonster("assets/skeleton.png");
+      int counter = 0;
       for (Monster actualMonster : allMonsters) {
         if (isNotOnMonstersPlace(actualMonster, createdMonster)
                 && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
           counter++;
-          if (counter == 1) {
+          if (allMonsters.size() == 1) {
             createdMonster.setKeyTrue();
           }
         }
@@ -114,8 +124,7 @@ public class BoardCreator {
   }
 
   private Monster createMonster(String image) {
-    Monster createdMonster = new Monster(randomCoord(), image, false);
-    return createdMonster;
+    return new Monster(randomCoord(), image);
   }
 
   private int[] randomCoord() {
