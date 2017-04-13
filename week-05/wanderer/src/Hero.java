@@ -13,6 +13,10 @@ public class Hero extends GameCharacter {
     imageDraw = new PositionedImage(imageName, positionX, positionY);
   }
 
+  public void setImageName(String newImage) {
+    imageName = newImage;
+  }
+
   public void setLevel() {
     level++;
     maxHealthPoint += getDieRoll();
