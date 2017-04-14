@@ -14,12 +14,14 @@ public class BoardCreator {
           {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
   int level;
   private Hero gameHero;
+  private GameCharacter gameHeroCharacter;
   private int monsterToKillIndex;
   private ArrayList<Monster> allMonsters;
 
   public BoardCreator() {
     allMonsters = new ArrayList<>();
     gameHero = new Hero();
+    gameHeroCharacter = gameHero;
     level = 1;
     fillAllMonsters();
   }
@@ -106,17 +108,17 @@ public class BoardCreator {
     }
   }
 
-  private boolean isNotOnHerosPlace(Monster createdMonster) {
-    if (createdMonster.getPositionX() != gameHero.getPositionX()
-            || createdMonster.getPositionY() != gameHero.getPositionY()) {
+  private boolean isNotOnHerosPlace(Monster checkedMonster) {
+    if (checkedMonster.getPositionX() != gameHeroCharacter.getPositionX()
+            || checkedMonster.getPositionY() != gameHeroCharacter.getPositionY()) {
       return true;
     } else {
       return false;
     }
   }
 
-  private boolean isNotOnWall(Monster createdMonster) {
-    if (tilesOrder[createdMonster.getPositionY()][createdMonster.getPositionX()] != 1) {
+  private boolean isNotOnWall(Monster checkedMonster) {
+    if (tilesOrder[checkedMonster.getPositionY()][checkedMonster.getPositionX()] != 1) {
       return true;
     } else {
       return false;
@@ -142,5 +144,14 @@ public class BoardCreator {
 
   public int[][] getTilesOrder() {
     return tilesOrder;
+  }
+
+  private int getRandomDirection() {
+    int random = (int) (Math.random() * 2);
+    if (random == 0) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 }
