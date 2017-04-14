@@ -47,12 +47,12 @@ public class GameCharacter {
     whereToGo("right", tilesOrder);
   }
 
-  public int getPositionX() {
-    return positionX;
+  public void setPositionX(int newX) {
+    positionX = newX;
   }
 
-  public int getPositionY() {
-    return positionY;
+  public void setPositionY(int newY) {
+    positionY = newY;
   }
 
   public void whereToGo(String direction, int[][] tilesOrder) {
@@ -73,6 +73,14 @@ public class GameCharacter {
         positionX += 1;
       }
     }
+  }
+
+  public int getPositionX() {
+    return positionX;
+  }
+
+  public int getPositionY() {
+    return positionY;
   }
 
   PositionedImage getImageDraw() {
