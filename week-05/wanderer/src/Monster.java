@@ -21,6 +21,11 @@ public class Monster extends GameCharacter {
     }
   }
 
+  public Monster(int positionX, int positionY) {
+    this.positionX = positionX;
+    this.positionY = positionY;
+  }
+
   public void setKeyTrue() {
     key = true;
     imageName = "assets/skeletonKey.png";
