@@ -1,17 +1,16 @@
 import java.util.ArrayList;
 
 public class BoardCreator {
-
   private int[][] tilesOrder = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
-          {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
+          {0, 0, 0, 0, 0, 1, 0, 1, 1, 0},
           {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
-          {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-          {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
+          {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+          {1, 1, 0, 1, 0, 1, 1, 1, 1, 0},
           {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
           {0, 1, 0, 1, 0, 1, 1, 0, 0, 0},
           {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
           {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
-          {0, 0, 0, 1, 0, 1, 1, 0, 1, 0}};
+          {0, 0, 0, 0, 0, 1, 1, 0, 0, 0}};
   int level;
   private Hero gameHero;
   private GameCharacter gameHeroCharacter;
@@ -62,7 +61,7 @@ public class BoardCreator {
   public boolean isFightSituation(Hero hero) {
     int counter = 0;
     for (Monster monster : allMonsters) {
-      if (!isNotOnMonstersPlace(hero, monster)) {
+      if (!isNotOnMonstersPlace(hero)) {
         counter++;
         monsterToKillIndex = allMonsters.indexOf(monster);
       }
@@ -74,37 +73,36 @@ public class BoardCreator {
     }
   }
 
+  public boolean isNotOnMonstersPlace(GameCharacter checkedCharacter) {
+    int counter = 0;
+    for (Monster actual : allMonsters) {
+      if (actual.getPositionX() == checkedCharacter.getPositionX() && actual.getPositionY() == checkedCharacter.getPositionY()) {
+        monsterToKillIndex = allMonsters.indexOf(actual);
+        counter++;
+      }
+    }
+    if (counter > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   private void fillAllMonsters() {
     while (allMonsters.isEmpty()) {
       Monster createdMonster = createMonster("assets/boss.png");
-      if (allMonsters.isEmpty() && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
+      if (isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
         allMonsters.add(createdMonster);
       }
     }
     while (allMonsters.size() < 4) {
       Monster createdMonster = createMonster("assets/skeleton.png");
-      int counter = 0;
-      for (Monster actualMonster : allMonsters) {
-        if (isNotOnMonstersPlace(actualMonster, createdMonster)
-                && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
-          counter++;
-          if (allMonsters.size() == 1) {
-            createdMonster.setKeyTrue();
-          }
+      if (isNotOnMonstersPlace(createdMonster) && isNotOnHerosPlace(createdMonster) && isNotOnWall(createdMonster)) {
+        if (allMonsters.size() == 1) {
+          createdMonster.setKeyTrue();
         }
-      }
-      if (allMonsters.size() == counter) {
         allMonsters.add(createdMonster);
       }
-    }
-  }
-
-  private boolean isNotOnMonstersPlace(GameCharacter actualCharacter, Monster createdMonster) {
-    if (actualCharacter.getPositionX() != createdMonster.getPositionX()
-            || actualCharacter.getPositionY() != createdMonster.getPositionY()) {
-      return true;
-    } else {
-      return false;
     }
   }
 
