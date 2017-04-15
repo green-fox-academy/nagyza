@@ -54,25 +54,6 @@ public class BoardCreator {
     }
   }
 
-  public Monster getMonsterToKill() { // only for test reasons
-    return allMonsters.get(monsterToKillIndex);
-  }
-
-  public boolean isFightSituation(Hero hero) {
-    int counter = 0;
-    for (Monster monster : allMonsters) {
-      if (!isNotOnMonstersPlace(hero)) {
-        counter++;
-        monsterToKillIndex = allMonsters.indexOf(monster);
-      }
-    }
-    if (counter > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   public boolean isNotOnMonstersPlace(GameCharacter checkedCharacter) {
     int counter = 0;
     for (Monster actual : allMonsters) {
@@ -86,6 +67,10 @@ public class BoardCreator {
     } else {
       return true;
     }
+  }
+
+  public String getMonsterToKillIndex() {
+    return String.valueOf(monsterToKillIndex);
   }
 
   private void fillAllMonsters() {
