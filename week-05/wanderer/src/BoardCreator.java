@@ -25,6 +25,27 @@ public class BoardCreator {
     fillAllMonsters();
   }
 
+  public void moveMonsters() {
+    for (Monster actualMonster : allMonsters) {
+      Monster movedMonster = actualMonster;
+      int actualX = actualMonster.getPositionX();
+      int actualY = actualMonster.getPositionY();
+      do {
+        if (getRandomDirection() == 0) {
+          movedMonster.moveUp(tilesOrder);
+        } else if (getRandomDirection() == 1) {
+          movedMonster.moveDown(tilesOrder);
+        } else if (getRandomDirection() == 2) {
+          movedMonster.moveRight(tilesOrder);
+        } else if (getRandomDirection() == 3) {
+          movedMonster.moveLeft(tilesOrder);
+        }
+      } while (!isNotOnMonstersPlace(movedMonster) && !(actualX != movedMonster.getPositionX() || actualY != movedMonster.getPositionY()));
+      actualMonster.setPositionX(movedMonster.getPositionX());
+      actualMonster.setPositionY(movedMonster.getPositionY());
+    }
+  }
+
   public void fight() {
     Monster monsterToKill = allMonsters.get(monsterToKillIndex);
     int counter = 0;
@@ -130,11 +151,6 @@ public class BoardCreator {
   }
 
   private int getRandomDirection() {
-    int random = (int) (Math.random() * 2);
-    if (random == 0) {
-      return -1;
-    } else {
-      return 1;
-    }
+    return (int) (Math.random() * 4);
   }
 }
