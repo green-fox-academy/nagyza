@@ -27,20 +27,23 @@ public class BoardCreator {
 
   public void moveMonsters() {
     for (Monster actualMonster : allMonsters) {
-      Monster movedMonster = actualMonster;
       int actualX = actualMonster.getPositionX();
       int actualY = actualMonster.getPositionY();
+      Monster movedMonster = new Monster(actualX, actualY);
       do {
-        if (getRandomDirection() == 0) {
+        movedMonster.setPositionX(actualX);
+        movedMonster.setPositionY(actualY);
+        int direction = getRandomDirection();
+        if (direction == 0) {
           movedMonster.moveUp(tilesOrder);
-        } else if (getRandomDirection() == 1) {
+        } else if (direction == 1) {
           movedMonster.moveDown(tilesOrder);
-        } else if (getRandomDirection() == 2) {
+        } else if (direction == 2) {
           movedMonster.moveRight(tilesOrder);
-        } else if (getRandomDirection() == 3) {
+        } else if (direction == 3) {
           movedMonster.moveLeft(tilesOrder);
         }
-      } while (!isNotOnMonstersPlace(movedMonster) && !(actualX != movedMonster.getPositionX() || actualY != movedMonster.getPositionY()));
+      } while (!isNotOnMonstersPlace(movedMonster) || (actualX == movedMonster.getPositionX() && actualY == movedMonster.getPositionY()));
       actualMonster.setPositionX(movedMonster.getPositionX());
       actualMonster.setPositionY(movedMonster.getPositionY());
     }
