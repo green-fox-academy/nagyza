@@ -7,20 +7,20 @@ public class Board extends JComponent implements KeyListener {
 
   BoardCreator gameBoard;
   Hero gameHero;
+  int moveCounter = 0;
+  int level;
 
   public Board() {
     gameBoard = new BoardCreator();
     gameHero = gameBoard.getGameHero();
-    setPreferredSize(new Dimension(720, 720));
+    level = 1;
+    setPreferredSize(new Dimension(1000, 720));
     setVisible(true);
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-
-    // here you have a 720x720 canvas
-    // you can create and draw an image using the class below e.g.
     int tilePosX = 0;
     int tilePosY = 0;
     for (int i = 0; i < 10; i++) {
@@ -37,7 +37,16 @@ public class Board extends JComponent implements KeyListener {
       tilePosY = 0;
       tilePosX += 1;
     }
+
+    int monsterStringY = 50;
+    for (Monster aktualMonster : gameBoard.getAllMonsters()) {
+      aktualMonster.getImageDraw().draw(graphics);
+      graphics.drawString(aktualMonster.toString(), 730, monsterStringY + 20);
+      monsterStringY += 20;
+    }
     this.gameHero.getImageDraw().draw(graphics);
+    graphics.drawString(gameHero.toString(), 730, 50);
+    graphics.drawString(gameBoard.getMonsterToKillIndex(), 730, 10);
   }
 
   public static void main(String[] args) {
@@ -62,16 +71,37 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP ) {
+
+    if (e.getKeyCode() == KeyEvent.VK_UP && gameBoard.isNotOnMonstersPlace(gameHero)) {
       gameHero.moveUp(gameBoard.getTilesOrder());
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      moveCounter++;
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && gameBoard.isNotOnMonstersPlace(gameHero)) {
       gameHero.moveDown(gameBoard.getTilesOrder());
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      moveCounter++;
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameBoard.isNotOnMonstersPlace(gameHero)) {
       gameHero.moveLeft(gameBoard.getTilesOrder());
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      moveCounter++;
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameBoard.isNotOnMonstersPlace(gameHero)) {
       gameHero.moveRight(gameBoard.getTilesOrder());
+      moveCounter++;
     }
-    // and redraw to have a new picture with the new coordinates
+    gameHero = gameBoard.getGameHero();
+    if (moveCounter % 2 == 0 && gameBoard.isNotOnMonstersPlace(gameHero)) {
+      gameBoard.moveMonsters();
+    }
+    if (!gameBoard.isNotOnMonstersPlace(gameHero)) {
+      if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        gameBoard.fight();
+      }
+    }
+    System.out.println(moveCounter);
+
+    if (gameBoard.getAllMonsters().size() == 0) {
+      this.level++;
+      gameHero.setPositionX(0);
+      gameHero.setPositionY(0);
+      gameBoard = new BoardCreator(gameHero, level);
+    }
     repaint();
   }
 }
