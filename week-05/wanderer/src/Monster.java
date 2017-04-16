@@ -1,11 +1,11 @@
 public class Monster extends GameCharacter {
   boolean key;
 
-  public Monster(int[] positionXY, String image) {
+  public Monster(int[] positionXY, String image, int level) {
     positionX = positionXY[0];
     positionY = positionXY[1];
     imageName = image;
-    level = 1;
+    this.level = level;
     if (image.equals("assets/boss.png")) {
       maxHealthPoint = level * 2 * getDieRoll() + getDieRoll();
       currentHealthPoint = maxHealthPoint;
