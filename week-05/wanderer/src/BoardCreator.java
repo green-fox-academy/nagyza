@@ -1,28 +1,57 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BoardCreator {
-  private int[][] tilesOrder = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
-          {0, 0, 0, 0, 0, 1, 0, 1, 1, 0},
-          {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
-          {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-          {1, 1, 0, 1, 0, 1, 1, 1, 1, 0},
-          {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
-          {0, 1, 0, 1, 0, 1, 1, 0, 0, 0},
-          {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
-          {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
-          {0, 0, 0, 0, 0, 1, 1, 0, 0, 0}};
+  private int[][] tilesOrder = new int[10][10];
   int level;
   private Hero gameHero;
   private GameCharacter gameHeroCharacter;
   private int monsterToKillIndex;
   private ArrayList<Monster> allMonsters;
+  List<GameCharacter> gameBoard;
 
   public BoardCreator() {
     allMonsters = new ArrayList<>();
     gameHero = new Hero();
     gameHeroCharacter = gameHero;
     level = 1;
+    fillTilesOrder();
     fillAllMonsters();
+  }
+
+  public BoardCreator(Hero hero, int level) {
+    allMonsters = new ArrayList<>();
+    gameHero = hero;
+    gameHeroCharacter = gameHero;
+    this.level = level;
+    fillTilesOrder();
+    fillAllMonsters();
+  }
+
+  void fillTilesOrder() {
+    List<String> allLines = readFile("assets/board-level" + level + ".csv");
+    for (int i = 0; i < 10; i++) {
+      String line[] = allLines.get(i).split(";");
+      for (int j = 0; j < 10; j++) {
+        tilesOrder[i][j] = Integer.parseInt(line[j]);
+      }
+    }
+    System.out.println("lev:" + level);
+  }
+
+  List<String> readFile(String fileName) {
+    Path filePath = Paths.get(fileName);
+    List<String> lines = new ArrayList<>();
+    try {
+      lines = Files.readAllLines(filePath);
+    } catch (IOException e) {
+      System.out.println("Something wrong with the files wich contain  maps for the game!");
+    }
+    return lines;
   }
 
   public void moveMonsters() {
@@ -71,7 +100,7 @@ public class BoardCreator {
         }
       } else {
         allMonsters.remove(monsterToKillIndex);
-        gameHero.setLevel();
+        gameHero.incLevel();
       }
     } else {
       gameHero.setImageName("assets/hero-dead.png");
@@ -133,7 +162,7 @@ public class BoardCreator {
   }
 
   private Monster createMonster(String image) {
-    return new Monster(randomCoord(), image);
+    return new Monster(randomCoord(), image, level);
   }
 
   private int[] randomCoord() {
