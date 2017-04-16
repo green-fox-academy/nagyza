@@ -17,7 +17,7 @@ public class Hero extends GameCharacter {
     imageName = newImage;
   }
 
-  public void setLevel() {
+  public void incLevel() {
     level++;
     maxHealthPoint += getDieRoll();
     defendPoint += getDieRoll();
