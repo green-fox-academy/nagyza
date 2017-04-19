@@ -23,6 +23,6 @@ public class Card {
 
   @Override
   public String toString() {
-    return this.rank + " " + this.suit + " " + this.color;
+    return this.rank + " " + this.suit + " " + this.color + "\n";
   }
 }
