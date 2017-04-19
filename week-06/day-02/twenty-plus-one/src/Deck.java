@@ -36,10 +36,6 @@ public class Deck {
     return this.deckOfCards.size();
   }
 
-  public Card getCardAtIndex(int index) {
-    return deckOfCards.get(index);
-  }
-
   public void shuffleDeck() {
     Collections.shuffle(this.deckOfCards);
   }
