@@ -8,12 +8,4 @@ public enum CardColor {
   CardColor(int value) {
     this.value = value;
   }
-
-  public static CardColor getRandomColor() {
-    return values()[(int) (Math.random() * SIZE)];
-  }
-
-  public int getValue() {
-    return value;
-  }
 }
