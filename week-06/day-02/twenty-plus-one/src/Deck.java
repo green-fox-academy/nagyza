@@ -32,6 +32,10 @@ public class Deck {
     return valueOfDeck;
   }
 
+  public int getSizeOfDeck() {
+    return this.deckOfCards.size();
+  }
+
   public Card getCardAtIndex(int index) {
     return deckOfCards.get(index);
   }
