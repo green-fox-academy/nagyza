@@ -69,7 +69,7 @@ public class Deck {
     for (Card card : this.deckOfCards) {
       cards += card.toString();
     }
-    return "There are " + this.getSizeOfDeck() + " cards deal. It's value: " + this.getValueOfDeck() + "\n"
-            + cards;
+    return "There are " + this.getSizeOfDeck() + " cards in the deal. It's value: " + this.getValueOfDeck()
+            + "\nThe following cards are in the deal: \n" + cards;
   }
 }
