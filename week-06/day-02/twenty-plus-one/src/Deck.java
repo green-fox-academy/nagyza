@@ -20,6 +20,10 @@ public class Deck {
     this.deckOfCards.add(card2);
   }
 
+  public void addCard(Card card) {
+    this.deckOfCards.add(card);
+  }
+
   public Card getCardAtIndex(int index) {
     return deckOfCards.get(index);
   }
