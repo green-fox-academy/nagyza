@@ -6,12 +6,18 @@ public class Deck {
   List<Card> deckOfCards;
 
   public Deck() {
-    deckOfCards = new ArrayList<>();
+    this.deckOfCards = new ArrayList<>();
     for (CardSuit suit : CardSuit.values()) {
       for (CardRank rank : CardRank.values()) {
         deckOfCards.add(new Card(suit, rank));
       }
     }
+  }
+
+  public Deck(Card card1, Card card2) {
+    this.deckOfCards = new ArrayList<>();
+    this.deckOfCards.add(card1);
+    this.deckOfCards.add(card2);
   }
 
   public Card getCardAtIndex(int index) {
