@@ -24,6 +24,14 @@ public class Deck {
     this.deckOfCards.add(card);
   }
 
+  public int getValueOfDeck() {
+    int valueOfDeck = 0;
+    for (Card card : deckOfCards) {
+      valueOfDeck += card.getValueOfCard();
+    }
+    return valueOfDeck;
+  }
+
   public Card getCardAtIndex(int index) {
     return deckOfCards.get(index);
   }
