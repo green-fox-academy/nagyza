@@ -19,6 +19,6 @@ public class Card {
 
   @Override
   public String toString() {
-    return "Rank " + this.rank + ", Value " + this.rank.getValue();
+    return this.rank + " " + this.suit + " " + this.color;
   }
 }
