@@ -1,6 +1,6 @@
 
 public enum  CardSuit {
-  CLUBS(0), DIAMONDS(1), HEARTS(2), SPADES(3);
+  CLUBS(0), SPADES(1), HEARTS(2), DIAMONDS(3);
 
   private int value;
   private static final int SIZE = values().length;
