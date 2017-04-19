@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -15,5 +16,28 @@ public class Deck {
 
   public Card getCardAtIndex(int index) {
     return deckOfCards.get(index);
+  }
+
+  public void shuffleDeck() {
+    Collections.shuffle(this.deckOfCards);
+  }
+
+  public Card pullFirst() {
+    Card cardToPull = deckOfCards.get(0);
+    deckOfCards.remove(0);
+    return cardToPull;
+  }
+
+  public Card pullLast() {
+    Card cardToPull = deckOfCards.get(deckOfCards.size() - 1);
+    deckOfCards.remove(deckOfCards.size() - 1);
+    return cardToPull;
+  }
+
+  public Card pullRandom() {
+    int indexToPull = (int)(Math.random() * deckOfCards.size());
+    Card cardToPull = deckOfCards.get(indexToPull);
+    deckOfCards.remove(indexToPull);
+    return cardToPull;
   }
 }
