@@ -1,20 +1,20 @@
 
 public class Card {
 
-  CardColor color;
-  CardSuit suit;
-  CardRank rank;
+  private CardColor color;
+  private CardSuit suit;
+  private CardRank rank;
 
   public Card() {
-    this.color = CardColor.getRandomColor();
     this.suit = CardSuit.getRandomSuite();
     this.rank = CardRank.getRandomRank();
+    this.color = this.suit.getValue() < 2 ? CardColor.BLACK : CardColor.RED;
   }
 
-  public Card(CardColor color, CardSuit suit, CardRank rank) {
-    this.color = color;
+  public Card(CardSuit suit, CardRank rank) {
     this.suit = suit;
     this.rank = rank;
+    this.color = this.suit.getValue() < 2 ? CardColor.BLACK : CardColor.RED;
   }
 
   @Override
