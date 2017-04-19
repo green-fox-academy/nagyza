@@ -62,4 +62,14 @@ public class Deck {
     deckOfCards.remove(indexToPull);
     return cardToPull;
   }
+
+  @Override
+  public String toString() {
+    String cards = "";
+    for (Card card : this.deckOfCards) {
+      cards += card.toString();
+    }
+    return "There are " + this.getSizeOfDeck() + " cards deal. It's value: " + this.getValueOfDeck() + "\n"
+            + cards;
+  }
 }
