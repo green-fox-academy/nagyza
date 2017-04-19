@@ -17,6 +17,10 @@ public class Card {
     this.color = this.suit.getValue() < 2 ? CardColor.BLACK : CardColor.RED;
   }
 
+  public int getValueOfCard() {
+    return rank.getValue();
+  }
+
   @Override
   public String toString() {
     return this.rank + " " + this.suit + " " + this.color;
