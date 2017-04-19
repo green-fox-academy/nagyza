@@ -1,11 +1,19 @@
-import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
 
 public enum CardColor {
-  RED(0), BLUE(1);
+  RED(0), BLACK(1);
 
   private int value;
+  private static final int SIZE = values().length;
 
-  private CardColor(int value) {
+  CardColor(int value) {
     this.value = value;
+  }
+
+  public static CardColor getRandomColor() {
+    return values()[(int) (Math.random() * SIZE)];
+  }
+
+  public int getValue() {
+    return value;
   }
 }
