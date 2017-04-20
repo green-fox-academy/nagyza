@@ -11,6 +11,10 @@ public class Card {
     this.color = this.suit.getValue() < 2 ? CardColor.BLACK : CardColor.RED;
   }
 
+  public void something() {
+
+  }
+
   public Card(CardSuit suit, CardRank rank) {
     this.suit = suit;
     this.rank = rank;
