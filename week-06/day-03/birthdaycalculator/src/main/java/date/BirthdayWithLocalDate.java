@@ -10,27 +10,39 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
   @Override
   public LocalDate parseDate(String str) {
     // TODO - return with the parsed date; format is: yyyy-MM-dd
-
+    return LocalDate.parse(str);
   }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
     // TODO - return the date formatted: month & day (MM. dd.)
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM. dd.");
+    return date.format(formatter);
   }
 
   @Override
   public boolean isAnniversaryToday(LocalDate date) {
     // TODO - return with true if today is the same month+day as date
+    int annyversary = LocalDate.now().getDayOfYear();
+    int dayToCheck = date.getDayOfYear();
+    return annyversary == dayToCheck;
   }
 
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
     // TODO - return how many years age the input date 'birthday' was
+    int birthYear = birthday.getYear();
+    int actualYear = LocalDate.now().getYear();
+    return actualYear - birthYear;
   }
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
     // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
+    int anniversary = LocalDate.now().getDayOfYear();
+    int dayToCheck = date.getDayOfYear();
+    int diffInDays = anniversary - dayToCheck;
+    return diffInDays < 0 ? diffInDays * -1 : diffInDays;
   }
 
   public static void main(String[] args) {
