@@ -1,3 +1,5 @@
+import date.BirthdayCalculator;
+import date.BirthdayWithLocalDate;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -6,7 +8,7 @@ import java.time.format.DateTimeParseException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestBirthdayCalculatorWithLocalDate {
+class TestBirthdayCalculatorWithLocalDate {
 
   private static final String EXPECTED_DATE_STR = "2016-11-30";
   private static final LocalDate EXPECTED_DATE = LocalDate.parse(EXPECTED_DATE_STR, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
