@@ -7,13 +7,14 @@ public class TodoApp {
   public TodoApp() {
     this.commands = new ArrayList<>();
     this.commands.add(new ListCommand());
+    this.commands.add(new AddCommand());
   }
 
   public void run (String[] args) {
     if (args.length == 0) {
+      System.out.println("Java Todo application\n=======================\nCreated by nagyza" +
+              "\n=======================\n\nCommand line arguments:");
       for (Command command : this.commands) {
-        System.out.println("Java Todo application\n=======================\nCreated by nagyza" +
-                "\n=======================\n\nCommand line arguments:");
         System.out.println(command.getArgument() + "  " + command.getCommandDescription());
       }
     } else {
