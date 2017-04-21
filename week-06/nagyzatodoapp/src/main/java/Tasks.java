@@ -2,26 +2,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Tasks {
-  private String isDone;
+  private boolean isDone;
   private String text;
   private String date;
   private int priority;
 
   Tasks(String text) {
-    this.isDone = " ";
+    this.isDone = false;
     this.text = text;
     this.date = taskSetDate();
     this.priority = 2;
   }
 
   Tasks(String text, int priority) {
-    this.isDone = " ";
+    this.isDone = false;
     this.text = text;
     this.date = taskSetDate();
     this.priority = priority;
   }
 
-  Tasks(String isDone, String text, String date, int priority) {
+  Tasks(boolean isDone, String text, String date, int priority) {
     this.isDone = isDone;
     this.text = text;
     this.date = date;
@@ -33,19 +33,15 @@ public class Tasks {
   }
 
   void changeDone() {
-    if (this.isDone.equals(" ")) {
-      this.isDone = "x";
-    } else {
-      this.isDone = " ";
-    }
+    this.isDone = !this.isDone;
   }
 
   void changeToBeDone() {
-    this.isDone = "x";
+    this.isDone = true;
   }
 
   void changeToBeUndone() {
-    this.isDone = " ";
+    this.isDone = false;
   }
 
   private String taskSetDate() {
@@ -56,10 +52,12 @@ public class Tasks {
 
   @Override
   public String toString() {
-    return "[" + isDone + "] " + " Priority: " + priority + "  " + date + " - " + text;
+    String isDoneStr = isDone ? "x" : " ";
+    return "[" + isDoneStr + "] " + " Priority: " + priority + "  " + date + " - " + text;
   }
 
   String toFile() {
-    return isDone + ";" + text + ";" + date + ";" + priority;
+    String isDoneStr = isDone ? "x" : " ";
+    return isDoneStr + ";" + text + ";" + date + ";" + priority;
   }
 }
