@@ -4,7 +4,7 @@ public class ListCommand extends Command {
   }
 
   @Override
-  public void execute () {
+  public void execute (String[] arguments) {
     FileHandler readFile = new FileHandler();
     if (readFile.readFileTodo().size() == 0) {
       System.out.println("No todo for today.");

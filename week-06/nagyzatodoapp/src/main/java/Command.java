@@ -10,7 +10,7 @@ public abstract class Command {
     this.detailedHelp = detailedHelp;
   }
 
-  public abstract void execute();
+  public abstract void execute(String[] argument);
 
   public String getArgument() {
     return argument;

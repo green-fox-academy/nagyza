@@ -20,7 +20,9 @@ public class TodoApp {
     } else {
       for (Command command : this.commands) {
         if (args[0].equals(command.getArgument())) {
-          command.execute();
+          command.execute(args);
+        } else {
+          System.out.println("Unsupported argument!");
         }
       }
     }
