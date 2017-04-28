@@ -6,11 +6,11 @@ public class ListCommand extends Command {
   @Override
   public void execute (String[] arguments) {
     FileHandler readFile = new FileHandler();
-    if (readFile.readFileTodo().size() == 0) {
+    if (readFile.getTasklist().size() == 0) {
       System.out.println("No todo for today.");
     } else {
-      for (String line : readFile.readFileTodo()) {
-        System.out.println(line);
+      for (Tasks tasks : readFile.getTasklist()) {
+        System.out.println(tasks.toString());
       }
     }
   }
