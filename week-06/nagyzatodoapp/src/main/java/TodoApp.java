@@ -18,12 +18,15 @@ public class TodoApp {
         System.out.println(command.getArgument() + "  " + command.getCommandDescription());
       }
     } else {
+      int executedCommand = 0;
       for (Command command : this.commands) {
         if (args[0].equals(command.getArgument())) {
+          executedCommand++;
           command.execute(args);
-        } else {
-          System.out.println("Unsupported argument!");
         }
+      }
+      if (executedCommand < 0) {
+        System.out.println("Unsupported argument!");
       }
     }
   }
