@@ -4,27 +4,31 @@ import java.util.Date;
 public class Tasks {
   private boolean isDone;
   private String text;
-  private String date;
+  private String dateStart;
+  private String dateEnd;
   private int priority;
 
   Tasks(String text) {
     this.isDone = false;
     this.text = text;
-    this.date = taskSetDate();
+    this.dateStart = taskSetDate();
+    this.dateEnd = "";
     this.priority = 2;
   }
 
   Tasks(String text, int priority) {
     this.isDone = false;
     this.text = text;
-    this.date = taskSetDate();
+    this.dateStart = taskSetDate();
+    this.dateEnd = "";
     this.priority = priority;
   }
 
-  Tasks(boolean isDone, String text, String date, int priority) {
+  Tasks(boolean isDone, String text, String dateStart, String dateEnd, int priority) {
     this.isDone = isDone;
     this.text = text;
-    this.date = date;
+    this.dateStart = dateStart;
+    this.dateEnd = dateEnd;
     this.priority = priority;
   }
 
@@ -50,14 +54,16 @@ public class Tasks {
     return sdf.format(myDate);
   }
 
+  private String getIsDoneString() {
+    return isDone ? "x" : " ";
+  }
+
   @Override
   public String toString() {
-    String isDoneStr = isDone ? "x" : " ";
-    return "[" + isDoneStr + "] " + " Priority: " + priority + "  " + date + " - " + text;
+    return "[" + getIsDoneString() + "] " + " Priority: " + priority + "  " + dateStart + " - " + dateEnd + " - " + text;
   }
 
   String toFile() {
-    String isDoneStr = isDone ? "x" : " ";
-    return isDoneStr + ";" + text + ";" + date + ";" + priority;
+    return getIsDoneString() + ";" + text + ";" + dateStart + ";" + dateEnd + ";" + priority;
   }
 }
