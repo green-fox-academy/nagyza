@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lionking Bank Account</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+</body>
+  <table>
+    <tr th:each="account : ${accounts}">
+      <td th:text="${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></td>
+    </tr>
+  </table>
+</html>
