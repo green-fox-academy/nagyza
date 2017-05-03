@@ -6,5 +6,6 @@
 </head>
 <body>
 </body>
-<p th:text="'Name: ' + ${name} + '; Balance: ' + ${#numbers.formatDecimal(balance, 0, 2, 'POINT')} + '; Type of animal: ' + ${animalType}"></p>
+<p th:text="'Name: ' + ${name} + '; Balance: ' + ${#numbers.formatDecimal(balance, 0, 2, 'POINT')}
+ + ' Zebra; Type of animal: ' + ${animalType}"></p>
 </html>
