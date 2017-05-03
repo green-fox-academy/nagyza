@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>Lionking Bank Account</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-</body>
-  <ul th:each="account : ${accounts}">
-    <li th:text="${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></li>
-  </ul>
+  <head>
+    <title>Lionking Bank Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  </head>
+  <body>
+    <ul th:each="account : ${accounts}">
+      <li th:text="${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></li>
+    </ul>
+  </body>
 </html>
