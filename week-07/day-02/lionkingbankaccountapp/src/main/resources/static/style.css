@@ -1,0 +1,8 @@
+.okclass {
+    font-weight: bold;
+    color: orangered;
+}
+
+.notokclass {
+    font-weight: normal;
+}

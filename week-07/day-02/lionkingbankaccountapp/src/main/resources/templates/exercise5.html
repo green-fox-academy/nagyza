@@ -3,10 +3,11 @@
   <head>
     <title>Lionking Bank Account</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
   </head>
   <body>
     <ul>
-      <li th:each="account : ${accounts}">
+      <li th:each="account : ${accounts}" th:class="${account.animalType == 'dog'} ? okclass : notokclass">
           <div th:if="${account.animalType == 'dog'}" th:text="${accountStat.index} + ' ' + ${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()} + ' King'"></div>
           <div th:unless="${account.animalType == 'dog'}" th:text="${accountStat.index} + ' ' + ${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></div>
       </li>
