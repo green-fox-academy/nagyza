@@ -6,7 +6,7 @@
   </head>
   <body>
     <ul th:each="account : ${accounts}">
-      <li th:text="${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></li>
+      <li th:text="${accountStat.index} + ' ' + ${account.getName()} + ' ' + ${account.getBalance()} + ' ' + ${account.getAnimalType()}"></li>
     </ul>
   </body>
 </html>
