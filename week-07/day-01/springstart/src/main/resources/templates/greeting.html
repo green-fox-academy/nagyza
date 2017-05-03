@@ -3,13 +3,14 @@
     <head>
         <title>Getting Started: Serving Web Content</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" th:href="@{/style.css}" />
     </head>
     <body>
         <p th:text="'Hello, ' + ${name} + '!'"></p>
         <p th:text="'This site was loaded ' + ${counter} + ' times since last server start.'"></p>
         <table>
             <tr th:each="hello : ${hellos}">
-                <td th:text="${hello.getGreet()}"></td>
+                <td th:text="${hello.getGreet()} + ' ' + ${name}"></td>
             </tr>
         </table>
     </body>

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -21,7 +22,7 @@ public class HelloWebController {
   public String greeting(Model model, @RequestParam("name") String name) {
     List<Greets> greets = new ArrayList<>();
     for (String hello : hellos) {
-      greets.add(new Greets(hello));
+      greets.add(new Greets(hello, Color.red));
     }
     model.addAttribute("name", name);
     model.addAttribute("counter", counter.getAndIncrement());
