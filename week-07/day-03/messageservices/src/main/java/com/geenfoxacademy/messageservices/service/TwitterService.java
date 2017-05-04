@@ -2,14 +2,8 @@ package com.geenfoxacademy.messageservices.service;
 
 public class TwitterService implements MessageService {
 
-  private String message;
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
   @Override
-  public String sendMessage() {
-    return this.message;
+  public String sendMessage(String message, String address) {
+    return "Tweet Sent to " + address + "with Message=" + message;
   }
 }
