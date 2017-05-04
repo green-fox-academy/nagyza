@@ -20,5 +20,4 @@ public class HellobeanworldApplication implements CommandLineRunner {
 		hello.setMessage("Hello, hello, helota!");
 		hello.getMessage();
 	}
-
 }
