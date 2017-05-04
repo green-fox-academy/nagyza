@@ -11,12 +11,16 @@ public class HellobeanworldApplication implements CommandLineRunner {
 	@Autowired
 	HelloWorld hello;
 
+  @Autowired
+  MyColor color;
+
 	public static void main(String[] args) {
 		SpringApplication.run(HellobeanworldApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+	  color.printColor();
 		hello.setMessage("Hello, hello, helota!");
 		hello.getMessage();
 	}
