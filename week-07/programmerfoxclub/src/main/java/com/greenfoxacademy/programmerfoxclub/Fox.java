@@ -12,7 +12,14 @@ public class Fox {
   private String name;
   private String food;
   private String drink;
-  private List<String> tricks = new ArrayList<>();
+  private List<String> tricks;
+
+  public Fox() {
+    this.name = "Karak";
+    this.food = "duck";
+    this.drink = "water";
+    this.tricks = new ArrayList<>();
+  }
 
   public String getName() {
     return name;

@@ -18,6 +18,24 @@
   </li>
 </ul>
 <img src="greenfox.png" alt="greenfox.png"/>
-<p>This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
+  <form method="post" action="/changefood">
+    <label>Food
+      <input list="food" name="food"/>
+    </label>
+    <datalist id="food">
+      <option value="duck"/>
+      <option value="chick"/>
+      <option value="lizard"/>
+      <option value="strawberry"/>
+    </datalist>
+    <label>Drink
+      <input list="drink" name="drink"/>
+    </label>
+    <datalist id="drink">
+      <option value="water"/>
+      <option value="blood"/>
+    </datalist>
+    <input type="submit" value="changefood"/>
+  </form>
 </body>
 </html>
