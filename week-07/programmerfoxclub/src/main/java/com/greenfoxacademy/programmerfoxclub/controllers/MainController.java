@@ -21,4 +21,9 @@ public class MainController {
     model.addAttribute("fox", fox);
     return "index";
   }
+
+  @RequestMapping("/nutrition_store")
+  public String nutritionStore() {
+    return "nutrition_store";
+  }
 }
