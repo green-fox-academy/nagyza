@@ -17,6 +17,7 @@ public class MainController {
     fox.setName("Karak");
     fox.setFood("tas");
     fox.setDrink("blood");
+    fox.addTrick("Lick his ...");
     model.addAttribute("fox", fox);
     return "index";
   }

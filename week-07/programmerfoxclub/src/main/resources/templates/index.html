@@ -15,6 +15,12 @@
     <img src="greenfox.png" alt="greenfox.png"/>
     <p th:text="'This is ' + ${fox.name} +  '. Currently living on ' + ${fox.food} + ' and ' + ${fox.drink} + ' . He knows ' + ${fox.tricks.size()} + ' trick.'">This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
     <h1>Known tricks</h1>
-    <p>You know he doesn't know any tricks yet.</p>
+    <p th:if="${fox.tricks.size() == 0}">You know he doesn't know any tricks yet.</p>
+    <p th:if="${fox.tricks.size() > 0}" th:text="'He knows ' + ${fox.tricks.size()} + ' tricks.'"></p>
+    <ul>
+      <li th:each="trick : ${fox.tricks}">
+        <span th:text="${trick}"/>
+      </li>
+    </ul>
   </body>
 </html>
