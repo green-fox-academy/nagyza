@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Programmer Fox Club</title>
-</head>
-<body>
-<ul>
-  <li>
-    <a href="/">
-      <span>Information</span>
-    </a>
-  </li>
-  <li>
-    <a href="/nutrition_store">
-      <span>Nutrition Store</span>
-    </a>
-  </li>
-</ul>
-<img src="greenfox.png" alt="greenfox.png"/>
-  <form method="post" action="/changefood">
-    <label>Food
-      <input list="food" name="food"/>
-    </label>
-    <datalist id="food">
-      <option value="duck"/>
-      <option value="chick"/>
-      <option value="lizard"/>
-      <option value="strawberry"/>
-    </datalist>
-    <label>Drink
-      <input list="drink" name="drink"/>
-    </label>
-    <datalist id="drink">
-      <option value="water"/>
-      <option value="blood"/>
-    </datalist>
-    <input type="submit" value="changefood"/>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Programmer Fox Club</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="/">
+          <span>Information</span>
+        </a>
+      </li>
+      <li>
+        <a href="/nutrition_store">
+          <span>Nutrition Store</span>
+        </a>
+      </li>
+    </ul>
+    <img src="greenfox.png" alt="greenfox.png"/>
+    <p th:text="'So ' + ${fox.getName()} +  ' is currently living on ' + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. But you can give him other food and drink below.'">This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
+    <form method="post" action="/changefood">
+      <label>Food
+        <input list="food" name="food"/>
+      </label>
+      <datalist id="food">
+        <option value="duck"/>
+        <option value="chick"/>
+        <option value="lizard"/>
+        <option value="strawberry"/>
+      </datalist>
+      <label>Drink
+        <input list="drink" name="drink"/>
+      </label>
+      <datalist id="drink">
+        <option value="water"/>
+        <option value="blood"/>
+      </datalist>
+      <input type="submit" value="Change Nutritions"/>
+    </form>
+  </body>
 </html>

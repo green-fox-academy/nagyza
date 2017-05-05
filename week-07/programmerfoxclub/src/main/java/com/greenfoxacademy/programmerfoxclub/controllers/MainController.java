@@ -20,7 +20,8 @@ public class MainController {
   }
 
   @RequestMapping("/nutrition_store")
-  public String nutritionStore() {
+  public String nutritionStore(Model model) {
+    model.addAttribute("fox", fox);
     return "nutrition_store";
   }
 
