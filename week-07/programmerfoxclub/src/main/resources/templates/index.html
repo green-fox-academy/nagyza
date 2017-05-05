@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <meta charset="UTF-8"/>
     <title>Programmer Fox Club</title>
   </head>
   <body>
@@ -12,8 +12,8 @@
         </a>
       </li>
     </ul>
-    <img src="/greenfox.png" alt="greenfox.png"/>
-    <p>This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
+    <img src="greenfox.png" alt="greenfox.png"/>
+    <p th:text="'This is ' + ${fox.name} +  '. Currently living on ' + ${fox.food} + ' and ' + ${fox.drink} + ' . He knows ' + ${fox.tricks.size()} + ' trick.'">This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
     <h1>Known tricks</h1>
     <p>You know he doesn't know any tricks yet.</p>
   </body>
