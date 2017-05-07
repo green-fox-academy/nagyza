@@ -22,16 +22,17 @@
     <form method="post" action="/changefood">
       <label>Food
         <select name="food">
-          <option value="duck">duck</option>
+          <option value="duck" th:selected="duck">duck</option>
           <option value="chick">chick</option>
           <option value="lizard">lizard</option>
           <option value="strawberry">strawberry</option>
         </select>
-      </label>
-      <label>Drink
+        Drink
         <select name="drink">
-          <option value="water">water</option>
+          <option value="water" th:selected="water">water</option>
           <option value="blood">blood</option>
+          <option value="coke">coke</option>
+          <option value="cacao">cacao</option>
         </select>
       </label>
       <input type="submit" value="Change Nutritions"/>
