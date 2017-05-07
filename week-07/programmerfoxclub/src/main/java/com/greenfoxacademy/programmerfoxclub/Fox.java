@@ -49,10 +49,6 @@ public class Fox {
     return tricks;
   }
 
-  public void setTricks(List<String> tricks) {
-    this.tricks = tricks;
-  }
-
   public void addTrick(String trick) {
     tricks.add(trick);
   }

@@ -37,4 +37,10 @@ public class MainController {
     model.addAttribute("fox", fox);
     return "trick_center";
   }
+
+  @RequestMapping("/addtrick")
+  public String addTrick(@RequestParam("tricks") String tricks) throws Exception {
+    fox.addTrick(tricks);
+    return "redirect:/";
+  }
 }

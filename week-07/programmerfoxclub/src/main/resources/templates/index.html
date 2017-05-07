@@ -13,7 +13,7 @@
     <p th:text="'This is ' + ${fox.getName()} +  '. Currently living on ' + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. He knows ' + ${fox.getTricks().size()} + ' trick.'">This is Mr. Green. Currently living on salad and water. He knows 0 trick.</p>
     <h1>Known tricks</h1>
     <p th:if="${fox.getTricks().size() == 0}">You know he doesn't know any tricks yet.</p>
-    <p th:if="${fox.getTricks().size() > 0}" th:text="'He knows ' + ${fox.getTricks().size()} + ' tricks.'"></p>
+    <p th:if="${fox.getTricks().size() > 0}" th:text="'He knows the next ' + ${fox.getTricks().size()} + ' tricks.'"></p>
     <ul>
       <li th:each="trick : ${fox.getTricks()}">
         <span th:text="${trick}"/>
