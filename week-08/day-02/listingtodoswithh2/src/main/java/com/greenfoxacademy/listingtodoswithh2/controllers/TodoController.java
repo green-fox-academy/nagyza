@@ -19,6 +19,6 @@ public class TodoController {
 
   @RequestMapping("/todo")
   public String list(Model model) {
-    return "index";
+    return "todo";
   }
 }
