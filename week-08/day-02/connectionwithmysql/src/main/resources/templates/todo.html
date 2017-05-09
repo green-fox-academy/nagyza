@@ -6,9 +6,20 @@
 </head>
 <body>
   <h1>Todos for today:</h1>
-  <ul>
-    <li th:each="todoline : ${todos}" th:text="${todoline}">Todo</li>
-  </ul>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Todo</th>
+      <th>Done</th>
+      <th>Urgent</th>
+    </tr>
+    <tr th:each="todoline : ${todos}" >
+      <th th:text="${todoline.id}"></th>
+      <th th:text="${todoline.title}"></th>
+      <th th:text="${todoline.isDone()}"></th>
+      <th th:text="${todoline.isUrgent()}"></th>
+    </tr>
+  </table>
   <form th:action="@{/addTodo}" method="post">
     <input type="text" th:name="title"/>
     <input type="submit"/>
