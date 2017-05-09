@@ -26,5 +26,8 @@ public class Todo {
     this.title = title;
   }
 
-
+  @Override
+  public String toString() {
+    return id + ": " + title;
+  }
 }
