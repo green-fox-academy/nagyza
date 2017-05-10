@@ -12,6 +12,10 @@ public class DoUntil {
   public DoUntil() {
   }
 
+  public void setWhat(String what) {
+    this.what = what;
+  }
+
   public void setUntil(int until) {
     this.until = until;
   }
@@ -32,8 +36,9 @@ public class DoUntil {
   }
 
   private int factorial(int until) {
-    for (int i = 1; i < until + 1; i++) {
-      this.result *= i + 1;
+    this.result = 1;
+    for (int i = 0; i < until; i++) {
+      this.result *= (i + 1);
     }
     return this.result;
   }
