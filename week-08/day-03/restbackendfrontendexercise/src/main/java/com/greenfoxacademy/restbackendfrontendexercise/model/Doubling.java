@@ -1,8 +1,8 @@
 package com.greenfoxacademy.restbackendfrontendexercise.model;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Doubling {
   private int received;
   private int result;
