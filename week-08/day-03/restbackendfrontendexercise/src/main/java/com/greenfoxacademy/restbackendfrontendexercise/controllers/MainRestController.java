@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import com.greenfoxacademy.restbackendfrontendexercise.model.ErrorMessage;
 
 @RestController
 public class MainRestController {
@@ -18,4 +20,8 @@ public class MainRestController {
     return doubling;
   }
 
+  @ExceptionHandler(Exception.class)
+  public ErrorMessage errorMessageSender(Exception e) {
+    return new ErrorMessage("Please provide an input!");
+  }
 }
