@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.greenfoxacademy.restbackendfrontendexercise.model.ErrorMessage;
 
 @RestController
-public class MainRestController {
+public class DoublingRestController {
 
   @Autowired
   Doubling doubling;
