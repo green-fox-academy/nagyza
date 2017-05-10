@@ -14,6 +14,9 @@ public class MainRestController {
   @Autowired
   Doubling doubling;
 
+  @Autowired
+  ErrorMessage errorMessage;
+
   @GetMapping("/doubling")
   public Doubling doubler(@RequestParam(value = "input") int input) {
     doubling.setReceived(input);
@@ -22,6 +25,7 @@ public class MainRestController {
 
   @ExceptionHandler(Exception.class)
   public ErrorMessage errorMessageSender(Exception e) {
-    return new ErrorMessage("Please provide an input!");
+    errorMessage.setError("Please provide an input!");
+    return errorMessage;
   }
 }
