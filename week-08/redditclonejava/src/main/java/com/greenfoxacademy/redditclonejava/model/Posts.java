@@ -1,28 +1,17 @@
 package com.greenfoxacademy.redditclonejava.model;
 
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Component
 public class Posts {
 
-  List<Post> posts;
+  Iterable<Post> posts;
 
   public Posts() {
-    this.posts = new ArrayList<>();
   }
 
-  public void addPost(Post post) {
-    this.posts.add(post);
-  }
-
-  public List<Post> getPosts() {
+  public Iterable<Post> getPosts() {
     return posts;
   }
 
-  public void setPosts(List<Post> posts) {
+  public void setPosts(Iterable<Post> posts) {
     this.posts = posts;
   }
 }
