@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "post")
 public class Post {
 
   @Id
@@ -18,6 +17,8 @@ public class Post {
   private int score;
 
   public Post() {
+    Long dateNow = new Date().getTime();
+    this.timestamp = new Timestamp(dateNow);
   }
 
   public Post(String title, String href) {
