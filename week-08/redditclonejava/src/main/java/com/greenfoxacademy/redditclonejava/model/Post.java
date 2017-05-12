@@ -1,6 +1,8 @@
 package com.greenfoxacademy.redditclonejava.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "post")
@@ -12,11 +14,17 @@ public class Post {
 
   private String title;
   private String href;
-  private long timestamp;
+  private Timestamp timestamp;
   private int score;
 
-  public Post(String title) {
+  public Post() {
+  }
+
+  public Post(String title, String href) {
     this.title = title;
+    this.href = href;
+    Long dateNow = new Date().getTime();
+    this.timestamp = new Timestamp(dateNow);
   }
 
   public int getId() {
@@ -43,11 +51,11 @@ public class Post {
     this.href = href;
   }
 
-  public long getTimestamp() {
+  public Timestamp getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(long timestamp) {
+  public void setTimestamp(Timestamp timestamp) {
     this.timestamp = timestamp;
   }
 
@@ -57,5 +65,10 @@ public class Post {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  @Override
+  public String toString() {
+    return title + " - " + timestamp;
   }
 }
