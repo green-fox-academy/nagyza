@@ -3,7 +3,7 @@ package com.greenfoxacademy.redditclonejava.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "post")
 public class Post {
 
   @Id
@@ -14,6 +14,10 @@ public class Post {
   private String href;
   private long timestamp;
   private int score;
+
+  public Post(String title) {
+    this.title = title;
+  }
 
   public int getId() {
     return id;
