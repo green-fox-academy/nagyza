@@ -25,7 +25,7 @@ public class ArrowController {
   @ExceptionHandler(Exception.class)
   public ErrorMessage errorMessageSender(MissingServletRequestParameterException e) {
     String paramName = e.getParameterName();
-    errorMessage.setError("I am Groot!");
+    errorMessage.setError("Hello! There where no parameters!");
     return errorMessage;
   }
 }
