@@ -35,12 +35,16 @@ public class GuardianControllerTest {
 
   @Test
   public void grootResponseWithRequestParam() throws Exception {
-
     mockMvc.perform(get("/groot?message=somemessage"))
             .andExpect(status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.received").value("somemessage"))
             .andExpect(MockMvcResultMatchers.jsonPath("$.translated").value("I am Groot!"));
-
   }
 
+  @Test
+  public void grootResponseWithoutRequestParam() throws Exception {
+    mockMvc.perform(get("/groot"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("I am Groot!"));
+  }
 }
