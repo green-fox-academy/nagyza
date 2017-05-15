@@ -20,6 +20,12 @@ public class Food {
   public Food() {
   }
 
+  public Food(String name, int amount, double calorie) {
+    this.name = name;
+    this.amount = amount;
+    this.calorie = calorie;
+  }
+
   public long getId() {
     return id;
   }
