@@ -15,7 +15,7 @@ public class GuardianController {
   @RequestMapping(value = "/groot", method = RequestMethod.GET)
   public Guardian grootResponse(@RequestParam(value = "message") String message) {
     Guardian guardian = new Guardian();
-    guardian.setMessage(message);
+    guardian.setReceived(message);
     guardian.setTranslated("I am Groot!");
     return guardian;
   }

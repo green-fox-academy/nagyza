@@ -5,18 +5,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class Guardian {
 
-  private String message;
+  private String received;
   private String translated;
 
   public Guardian() {
   }
 
-  public String getMessage() {
-    return message;
+  public String getReceived() {
+    return received;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setReceived(String received) {
+    this.received = received;
   }
 
   public String getTranslated() {
