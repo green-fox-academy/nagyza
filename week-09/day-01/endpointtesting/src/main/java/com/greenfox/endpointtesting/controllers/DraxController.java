@@ -30,4 +30,17 @@ public class DraxController {
     draxRepository.save(this.food);
     return this.food;
   }
+
+  @PutMapping("/update/{id}")
+  public Food updateFoodById(@PathVariable long id, @RequestParam int amount) {
+    Food f = draxRepository.findOne(id);
+    f.setAmount(amount);
+    draxRepository.save(f);
+    return f;
+  }
+
+  @DeleteMapping("/delete")
+  public void deleteFoodById(@RequestParam long id) {
+    draxRepository.delete(id);
+  }
 }
