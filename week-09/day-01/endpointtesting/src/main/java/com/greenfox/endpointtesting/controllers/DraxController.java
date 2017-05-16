@@ -28,8 +28,6 @@ public class DraxController {
   public Food addFoodToCalorieTable(@RequestBody Food food) {
     this.food = food;
     draxRepository.save(this.food);
-    return food;
+    return this.food;
   }
-
-
 }
