@@ -20,12 +20,6 @@ public class Food {
   public Food() {
   }
 
-  public Food(String name, int amount, double calorie) {
-    this.name = name;
-    this.amount = amount;
-    this.calorie = calorie;
-  }
-
   public long getId() {
     return id;
   }
@@ -50,11 +44,23 @@ public class Food {
     this.amount = amount;
   }
 
+  public void setCalorie(double calorie) {
+    this.calorie = calorie;
+  }
+
+  public void changeAmount(int amount) {
+    int oldAmount = this.amount;
+    this.amount = amount;
+    int amountDifference = this.amount - oldAmount;
+    changeCalorie(amountDifference, oldAmount);
+  }
+
   public double getCalorie() {
     return calorie;
   }
 
-  public void setCalorie(double calorie) {
-    this.calorie = calorie;
+  public void changeCalorie(int amountDifference, int oldAmount) {
+    double calorieByPiece = this.calorie / oldAmount;
+    this.calorie += amountDifference * calorieByPiece;
   }
 }
