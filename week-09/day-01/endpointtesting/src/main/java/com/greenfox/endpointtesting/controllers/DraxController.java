@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 public class DraxController {
 
   @Autowired
-  CalorieTable calorieTable;
+  private CalorieTable calorieTable;
 
   @Autowired
-  DraxRepository draxRepository;
+  private DraxRepository draxRepository;
 
   @GetMapping("/drax")
   public CalorieTable getCalorieTable() {
