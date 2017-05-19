@@ -64,9 +64,12 @@ public class DraxController {
   public List<Food> queryGreaterByAmount(@RequestParam String smallerOrGreater, @RequestParam int amount) {
     if (smallerOrGreater.equals("g")) {
       return draxRepository.queryFoodByAmountGreaterThan(amount);
-    } else {
-      return draxRepository.queryFoodByAmountIsLessThan(amount);
+    } else if (smallerOrGreater.equals("s")){
+      return draxRepository.queryFoodByAmountLessThan(amount);
+    } else if (smallerOrGreater.equals("e")) {
+      return draxRepository.queryFoodByAmountEquals(amount);
     }
+    return draxRepository.queryFoodByAmountGreaterThan(0);
   }
 
   @ExceptionHandler(Exception.class)
