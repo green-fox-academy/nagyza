@@ -1,16 +1,14 @@
 package com.greenfox.endpointtesting.services;
 
-import org.springframework.stereotype.Service;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "calorie")
-@Service
+@Table(name = "pantry")
 public class Food {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "foodid")
   private long id;
 
   private String name;
