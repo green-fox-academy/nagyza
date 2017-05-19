@@ -1,6 +1,6 @@
 package com.greenfox.endpointtesting.controllers;
 
-import com.greenfox.endpointtesting.repository.DraxRepository;
+import com.greenfox.endpointtesting.repository.FoodRepository;
 import com.greenfox.endpointtesting.services.CalorieTable;
 import com.greenfox.endpointtesting.services.ErrorMessage;
 import com.greenfox.endpointtesting.services.Food;
@@ -17,59 +17,59 @@ public class DraxController {
   private CalorieTable calorieTable;
 
   @Autowired
-  private DraxRepository draxRepository;
+  private FoodRepository foodRepository;
 
   @Autowired
   ErrorMessage errorMessage;
 
   @GetMapping("/drax")
   public CalorieTable getCalorieTable() {
-    calorieTable.setAllFood(draxRepository.findAll());
+    calorieTable.setAllFood(foodRepository.findAll());
     return calorieTable;
   }
 
   @PostMapping("/addfood")
   public Food addFoodToCalorieTable(@RequestBody Food food) {
     long indexOfFood = 0;
-    for (Food f : draxRepository.findAll()) {
+    for (Food f : foodRepository.findAll()) {
       if (f.getName().equals(food.getName())) {
         indexOfFood = f.getId();
       }
     }
     if (indexOfFood > 0) {
-      Food foodToChange = draxRepository.findOne(indexOfFood);
+      Food foodToChange = foodRepository.findOne(indexOfFood);
       foodToChange.changeAmount(foodToChange.getAmount() + food.getAmount());
-      draxRepository.save(foodToChange);
-      return draxRepository.findOne(indexOfFood);
+      foodRepository.save(foodToChange);
+      return foodRepository.findOne(indexOfFood);
     } else {
-      draxRepository.save(food);
+      foodRepository.save(food);
       return food;
     }
   }
 
   @PutMapping("/update/{id}")
   public Food updateFoodById(@PathVariable long id, @RequestParam int amount) {
-    Food f = draxRepository.findOne(id);
+    Food f = foodRepository.findOne(id);
     f.changeAmount(amount);
-    draxRepository.save(f);
+    foodRepository.save(f);
     return f;
   }
 
   @DeleteMapping("/delete")
   public void deleteFoodById(@RequestParam long id) {
-    draxRepository.delete(id);
+    foodRepository.delete(id);
   }
 
   @GetMapping("/querybyamount")
   public List<Food> queryGreaterByAmount(@RequestParam String smallerOrGreater, @RequestParam int amount) {
     if (smallerOrGreater.equals("g")) {
-      return draxRepository.queryFoodByAmountGreaterThan(amount);
+      return foodRepository.queryFoodByAmountGreaterThan(amount);
     } else if (smallerOrGreater.equals("s")){
-      return draxRepository.queryFoodByAmountLessThan(amount);
+      return foodRepository.queryFoodByAmountLessThan(amount);
     } else if (smallerOrGreater.equals("e")) {
-      return draxRepository.queryFoodByAmountEquals(amount);
+      return foodRepository.queryFoodByAmountEquals(amount);
     }
-    return draxRepository.queryFoodByAmountGreaterThan(0);
+    return foodRepository.queryFoodByAmountGreaterThan(0);
   }
 
   @ExceptionHandler(Exception.class)
