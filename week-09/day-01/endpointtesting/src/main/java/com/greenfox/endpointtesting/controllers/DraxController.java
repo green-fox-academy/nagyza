@@ -2,8 +2,10 @@ package com.greenfox.endpointtesting.controllers;
 
 import com.greenfox.endpointtesting.repository.DraxRepository;
 import com.greenfox.endpointtesting.services.CalorieTable;
+import com.greenfox.endpointtesting.services.ErrorMessage;
 import com.greenfox.endpointtesting.services.Food;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +18,9 @@ public class DraxController {
 
   @Autowired
   private DraxRepository draxRepository;
+
+  @Autowired
+  ErrorMessage errorMessage;
 
   @GetMapping("/drax")
   public CalorieTable getCalorieTable() {
@@ -62,5 +67,12 @@ public class DraxController {
     } else {
       return draxRepository.queryFoodByAmountIsLessThan(amount);
     }
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ErrorMessage errorMessageSender(MissingServletRequestParameterException e) {
+    String paramName = e.getParameterName();
+    errorMessage.setError("Hello! Something wrong with the " + paramName + " parameter.");
+    return errorMessage;
   }
 }
