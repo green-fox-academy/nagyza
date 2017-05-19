@@ -9,4 +9,7 @@ import java.util.List;
 @Component
 public interface DraxRepository extends CrudRepository<Food, Long> {
   List<Food> findByName(String name);
+
+  List<Food> queryFoodByAmountGreaterThan(int amount);
+
 }

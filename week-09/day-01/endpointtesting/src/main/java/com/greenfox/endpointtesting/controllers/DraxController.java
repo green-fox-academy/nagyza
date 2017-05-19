@@ -6,6 +6,8 @@ import com.greenfox.endpointtesting.services.Food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class DraxController {
 
@@ -51,5 +53,10 @@ public class DraxController {
   @DeleteMapping("/delete")
   public void deleteFoodById(@RequestParam long id) {
     draxRepository.delete(id);
+  }
+
+  @GetMapping("/querybyamount")
+  public List<Food> queryGreaterByAmount(@RequestParam int amount) {
+    return draxRepository.queryFoodByAmountGreaterThan(amount);
   }
 }
