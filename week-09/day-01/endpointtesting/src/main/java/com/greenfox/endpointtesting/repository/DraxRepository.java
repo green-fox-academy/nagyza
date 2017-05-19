@@ -12,4 +12,5 @@ public interface DraxRepository extends CrudRepository<Food, Long> {
 
   List<Food> queryFoodByAmountGreaterThan(int amount);
 
+  List<Food> queryFoodByAmountIsLessThan(int amount);
 }

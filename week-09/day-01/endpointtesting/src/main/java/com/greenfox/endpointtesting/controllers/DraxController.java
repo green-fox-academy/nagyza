@@ -56,7 +56,11 @@ public class DraxController {
   }
 
   @GetMapping("/querybyamount")
-  public List<Food> queryGreaterByAmount(@RequestParam int amount) {
-    return draxRepository.queryFoodByAmountGreaterThan(amount);
+  public List<Food> queryGreaterByAmount(@RequestParam String smallerOrGreater, @RequestParam int amount) {
+    if (smallerOrGreater.equals("g")) {
+      return draxRepository.queryFoodByAmountGreaterThan(amount);
+    } else {
+      return draxRepository.queryFoodByAmountIsLessThan(amount);
+    }
   }
 }
