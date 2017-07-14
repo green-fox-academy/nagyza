@@ -30,8 +30,11 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-# Visual Studio cache files
+# Visual Studio
 *.[Cc]ache
+[Bb]in/
+[Oo]bj/
+[Ll]og/
 
 # .NET Core
 project.lock.json
