@@ -1,0 +1,6 @@
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\bin\Debug\Excercise-01.exe.config
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\bin\Debug\Excercise-01.exe
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\bin\Debug\Excercise-01.pdb
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\obj\Debug\Excercise-01.csprojResolveAssemblyReference.cache
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\obj\Debug\Excercise-01.exe
+C:\greenfox\nagyza\week-15\Excercise-01\Excercise-01\obj\Debug\Excercise-01.pdb
