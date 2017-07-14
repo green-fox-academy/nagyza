@@ -1,5 +1,0 @@
-C:\greenfox\nagyza\week-15\Excercise-01\Excercise-02\bin\Debug\Excercise-02.exe.config
-C:\greenfox\nagyza\week-15\Excercise-01\Excercise-02\bin\Debug\Excercise-02.exe
-C:\greenfox\nagyza\week-15\Excercise-01\Excercise-02\bin\Debug\Excercise-02.pdb
-C:\greenfox\nagyza\week-15\Excercise-01\Excercise-02\obj\Debug\Excercise-02.exe
-C:\greenfox\nagyza\week-15\Excercise-01\Excercise-02\obj\Debug\Excercise-02.pdb
