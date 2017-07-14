@@ -11,10 +11,10 @@ namespace Battleship
         public static Board gameBoard = new Board();
         static void Main(string[] args)
         {
-            int[] row = new int[10];
+            List<int> row = new List<int>();
             for (int i = 0; i < 10; i++)
             {
-                row[i] = 0;
+                row.Add(0);
             }
 
             for (int i = 0; i < 10; i++)
@@ -22,7 +22,7 @@ namespace Battleship
                 gameBoard.BattleField.Add(row);
             }
 
-            foreach (int[] i in gameBoard.BattleField)
+            foreach (List<int> i in gameBoard.BattleField)
             {
                 foreach (int j in i)
                 {
